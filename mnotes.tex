@@ -1,0 +1,49 @@
+\documentclass[12pt,a4paper,openany,oneside]{book}
+%------------------------------------------------------------------------------%
+\newcommand\artversion{0.1.0}
+\newcommand\shorttitle{Math Notes}
+\newcommand\strtitle{Math Notes}
+\newcommand\strauthor{polossk}
+\title{\strtitle}
+\author{\strauthor}
+\date{\today}
+%------------------------------------------------------------------------------%
+\input{book-setting}
+%------------------------------------------------------------------------------%
+\begin{document}
+%------------------------------------------------------------------------------%
+\begin{titlepage}
+    \vspace*{4em}
+    \begin{center}
+        {\Huge \bf \strtitle} \\
+        \vspace{1em}
+        {\Large \it \strauthor} \\
+        \vspace{1em}
+        {\large \today} \\
+    \end{center}
+\end{titlepage}
+\thispagestyle{fancy}
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\fHei 目录}
+\tableofcontents
+\clearpage
+
+%------------------------------------------------------------------------------%
+
+%---------------------------------------
+% 文章正文
+%---------------------------------------
+
+\input{chapters/chapter-99-misc/main.tex}
+
+%---------------------------------------
+
+%---------------------------------------
+% 文章结束
+%---------------------------------------
+
+
+%------------------------------------------------------------------------------%
+
+\end{document}
