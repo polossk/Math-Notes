@@ -1,7 +1,7 @@
 % pdf 设置区
 %---------------------------------纸张大小设置---------------------------------%
 \usepackage{geometry}
-\geometry{left=2.05cm,right=2.05cm,top=2.5cm,bottom=2.5cm}
+\geometry{b5paper,left=2cm,right=2cm,top=2.05cm,bottom=2.05cm}
 %------------------------------------------------------------------------------%
 
 
@@ -184,11 +184,9 @@
 \usepackage{fancyhdr}
 \usepackage{fancyref}
 \pagestyle{fancy}
-\chead{{\it \shorttitle}}
-\rhead{{\tt \artversion}}
-\lfoot{}
-\cfoot{\thepage}
-\rfoot{}
+\fancyfoot[RO, LE]{\thepage}
+\fancyfoot[RE]{{\it \shorttitle}}
+\fancyfoot[LO]{{\tt \artversion}}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headwidth}{\textwidth}
 \renewcommand{\footrulewidth}{0pt}
