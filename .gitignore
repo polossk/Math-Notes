@@ -49,4 +49,6 @@ Temporary Items
 *.log
 *.out
 *.toc
-mnotes.aux
+*.aux
+*.fdb_latexmk
+*.fls

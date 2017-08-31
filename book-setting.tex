@@ -184,9 +184,17 @@
 \usepackage{fancyhdr}
 \usepackage{fancyref}
 \pagestyle{fancy}
+\cfoot{}
 \fancyfoot[RO, LE]{\thepage}
-\fancyfoot[RE]{{\it \shorttitle}}
 \fancyfoot[LO]{{\tt \artversion}}
+\fancyfoot[RE]{{\it \shorttitle}}
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[RO, LE]{\thepage}
+    \fancyfoot[LO]{{\tt \artversion}}
+    \fancyfoot[RE]{{\it \shorttitle}}
+}
+
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headwidth}{\textwidth}
 \renewcommand{\footrulewidth}{0pt}
