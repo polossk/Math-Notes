@@ -1,0 +1,57 @@
+\section{排列组合恒等式}
+排列数以及组合数的定义如下
+\[ \begin{aligned}
+    A^m_n &= \frac{n!}{(n-m)!} &= m! C^m_n \\
+    C^m_n &= \frac{n!}{m!(n-m)!} &= C^{n-m}_{n} &= C^m_{n-1} + C^{m-1}_{n-1}
+\end{aligned} \]
+\subsection{排列恒等式}
+\begin{itemize}
+\item $A^n_n = n!$
+\item $A^m_n = (n-m+1) A^{m-1}_n$
+\item $A^{m}_{n} = \frac{n}{n-m} A^{m}_{n-1}$
+\item $A^{m}_{n} = n A^{m-1}_{n-1}$
+\item $nA^{n}_{n} = A^{n+1}_{n+1} - A^{n}_{n}$
+\item $A^{m}_{n+1} = A^{m}_{n} + mA^{m-1}_{n}$
+\item $\sum^n_{i=1} i \cdot i! = (n+1)! - 1$
+\end{itemize}
+
+\subsection{组合恒等式}
+\begin{itemize}
+\item $C^{m}_{n} = \frac{n-m+1}{m} C^{m-1}_{n}$
+\item $C^{m}_{n} = \frac{n}{n-m} C^{m}_{n-1}$
+\item $C^{m}_{n} = \frac{n}{m} C^{m-1}_{n-1}$
+\item $\sum^n_{r=0} C^{r}_{n} = 2^n$
+\item $C^{r}_{r} + C^{r}_{r+1} + C^{r}_{r+2} + \cdots + C^{r}_{n} = C^{r+1}_{n+1}$
+\item $C^{1}_{n} + C^{3}_{n} + C^{5}_{n} + \cdots = C^{0}_{n} + C^{2}_{n} + C^{4}_{n} + \cdots = 2^{n-1}$
+\item $C^{1}_{n} + 2C^{2}_{n} + 3C^{3}_{n} + \cdots + nC^{n}_{n} = n2^{n-1}$
+\item $C^{r}_{m}C^{0}_{n} + C^{r-1}_{m}C^{1}_{n} + \cdots + C^{r}_{m}C^{0}_{n} = C^{r}_{m+n}$
+\item $(C^{0}_{n})^2 + (C^{1}_{n})^2 + (C^{2}_{n})^2 + \cdots + (C^{n}_{n})^2 = C^{n}_{2n}$
+\end{itemize}
+
+\subsection{典型问题}
+\begin{itemize}
+\item $n$取$m$个排列, 1个特别在特别位: $A^{m-1}_{n-1}$
+\item $n$取$m$个排列, 1个特别不在特别位: $A^{m}_{n} - A^{m-1}_{n-1}$(补集), $A^{1}_{n-1}A^{m-1}_{n-1}$(定位), $A^{m}_{n-1} + A^{1}_{m-1}A^{m-1}_{n-1}$(定元素)
+\item 定位紧贴, $k$个元固定: $A^{k}_{k}A^{m-k}_{n-k}$
+\item 浮动紧贴, $k$个元在一起: $A^{k}_{k}A^{m-k+1}_{n-k+1}$
+\item 插空, $k$个元不能在一起($k \leq m - k + 1$): $A^{k}_{m-k+1}A^{m-k}_{n-k}$
+\item $m$个大球, $n$个小球, 要求小球必须分开: 1. 当 $n>m+1$ 时, 无解; 2. 当 $n \leq m+1$ 时, $N = A^{n}_{m+1} / A^n_n = C^n_{m+1}$
+\item 两组相同元素分别有$m$和$n$个, 各组元素分别相同: $C^n_{m+n}$
+\item 相异的$mn$个物品等分给$m$个人: $N = C^n_{mn}C^n_{mn-n} \cdots C^n_{2n}C^n_{n} = (mn)! / (n!)^m$
+\item 相异的$mn$个物品无顺序等分$m$份: $N = 1/ (m!) \cdot C^n_{mn}C^n_{mn-n} \cdots C^n_{2n}C^n_{n} = \frac{(mn)!}{m!(n!)^m}$
+\item 相异的$P = \sum^m_{i = 1} n_i$个物品分$m$份, 且数量恰为$\{n_i\}$, 同时 $\forall n_i \ne n_j$: $N = C^{n1}_{P-n1}C^{n2}_{P-n2} \cdots C^{n_m}_{P-n_m} \cdot m! = \frac{p!m!}{n_1!n_2! \cdots n_m!}$
+\item 相异的$P = \sum^m_{i = 1} n_i$个物品无顺序分$m$份, 且数量恰为$\{n_i\}$, 同时 $\forall n_i \ne n_j$: $N = C^{n1}_{P-n1}C^{n2}_{P-n2} \cdots C^{n_m}_{P-n_m} = \frac{p!}{n_1!n_2! \cdots n_m!}$
+\item 相异的$P = \sum^m_{i = 1} n_i$个物品分$m$份, 且数量恰为$\{n_i\}$, 同时有 $a, b, c, \cdots$ 个相同: $N = \frac{C^{n1}_{P-n1}C^{n2}_{P-n2} \cdots C^{n_m}_{P-n_m} \cdot m!}{a!b!c!\cdots} = \frac{p!m!}{n_1!n_2! \cdots n_m! (a!b!c!)}$
+\item 相异的$P = \sum^m_{i = 1} n_i$个物品无顺序分$m$份, 且数量恰为$\{n_i\}$, 同时有 $a, b, c, \cdots$ 个相同: $N = \frac{C^{n1}_{P-n1}C^{n2}_{P-n2} \cdots C^{n_m}_{P-n_m}}{a!b!c!\cdots} = \frac{p!}{n_1!n_2! \cdots n_m! (a!b!c!)}$
+\end{itemize}
+\noindent {\bf 错排公式:} 若一个排列的所有元素都不在原来的位置, 则称这个排列为错排. 用 $F(n)$ 表示序列 $1, 2, \cdots, n$ 的所有错排的个数.
+\begin{itemize}
+\item $F(1) = 0$
+\item $F(2) = 1$
+\item $F(n) = (n-1)(F(n-1) + F(n-2))$
+\end{itemize}
+展开递推式
+\[
+F(n) = n! [\frac{1}{0!} - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots + (-1)^{n}\frac{1}{n!}]
+\]
+\endinput
