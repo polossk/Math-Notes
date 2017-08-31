@@ -184,6 +184,7 @@
 \usepackage{fancyhdr}
 \usepackage{fancyref}
 \pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptertitlename\ #1}{}}
 \cfoot{}
 \fancyfoot[RO, LE]{\thepage}
 \fancyfoot[LO]{{\tt \artversion}}
@@ -193,6 +194,8 @@
     \fancyfoot[RO, LE]{\thepage}
     \fancyfoot[LO]{{\tt \artversion}}
     \fancyfoot[RE]{{\it \shorttitle}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
 }
 
 \renewcommand{\headrulewidth}{0.4pt}
