@@ -134,8 +134,9 @@
 %------------------------------------------------------------------------------%
 
 %----------------------------设置段落标题与目录格式----------------------------%
+\usepackage{tocbibind}
 \setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
+\setcounter{tocdepth}{2}
 
 
 % 正文中标题格式，毋需标号
@@ -152,7 +153,7 @@
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
 \renewcommand{\bibname}{参考文献}
-\renewcommand{\contentsname}{目~录}
+\renewcommand{\contentsname}{目录}
 
 
 \titleformat{\chapter}[hang]{\normalfont\sErhao\filcenter\fHei\bf}{\sErhao{\chaptertitlename}}{20pt}{\sErhao}
