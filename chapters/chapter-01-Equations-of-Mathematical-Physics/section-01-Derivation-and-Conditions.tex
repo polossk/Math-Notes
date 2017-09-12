@@ -1,16 +1,93 @@
 \section{方程的导出和定解条件}
+%==============================================================================%
+%******************************************************************************%
+%==============================================================================%
 \paragraph{Ex 1.}
-% 23456789----------0123456789----------0123456789----------0123456789----------
 一根长为 $l$ 的两端固定的弦, 如在中点把弦线提起, 使中点离开平衡位置的距离为 $a$,
 然后把弦线轻轻放下, 使弦作微小横振动. 试列出弦振动所满足的定解问题.
 
+\solution
+\[
+\frac{\partial^2 u}{\partial t^2} - a^2 \frac{\partial^2 u}{\partial x^2} = 0,
+x \in (0, 1), t > 0
+\]
+端点固定: $u(0, t) = u(l, t) = 0$. 初值为两线段:
+\[\begin{cases}
+u(x, 0) = \frac{2a}{l} x, & x \in (0, \frac{l}{2}] \\
+u(x, 0) = -\frac{2a}{l} (x - l), & x \in (\frac{l}{2}, l)
+\end{cases} \]
+初值时为静止状态: $u_t(x, 0) = 0$.
+
+综上有:
+\[ \begin{aligned}
+\frac{\partial^2 u}{\partial t^2} - a^2 \frac{\partial^2 u}{\partial x^2} &= 0,
+x \in (0, 1), t > 0\\
+u(0, t) &= u(l, t) = 0\\
+u(x, 0) &= \begin{cases}
+\frac{2a}{l} x, & x \in (0, \frac{l}{2}] \\
+-\frac{2a}{l} (x - l), & x \in (\frac{l}{2}, l)
+\end{cases}\\
+u_t(x, 0) &= 0
+\end{aligned} \]
+\qed
+
+%==============================================================================%
+%******************************************************************************%
+%==============================================================================%
 \paragraph{Ex 3.}
-% 23456789----------0123456789----------0123456789----------0123456789----------
 设长度为 $l$ 的均匀弹性杆的线密度为 $\rho$, 杨氏模量为 $E$, 试列出杆的微小纵振动
 方程.
 
+\solution 微元 $(x, x + \Delta x)$ 的两端有伸长量 $u_t(x, t)$,
+$u_t(x + \Delta x, t)$. 不妨设杆的横截面为 $S = S(x)$, 则有
+\[ \begin{aligned}
+x\text{处所受拉力:} & F_x = E(x) \cdot u_t(x, t) \cdot S(x) \\
+x' = x + \Delta x\text{处所受拉力:} & F_{x'} = E(x') \cdot u_t(x', t)\cdot S(x')
+\end{aligned} \]
+
+$\sum F = F_{x'} - F_x$, 设其重心为 $\bar x$, 有
+\[
+a = \frac{\partial^2 u}{\partial t^2}(\bar x, t) = \frac{\sum F}{m},
+\]
+又由于 $m = \rho \cdot V = m \rho (S(x) \cdot x)$, 进一步化简得
+\[ \begin{aligned}
+\implies \Delta x \cdot \frac{\partial^2 u}{\partial t^2}(\bar x, t)
+\cdot \rho(\bar x) \cdot S(\bar x)
+&= E(x + \Delta x) \cdot u_t(x + \Delta x, t)\cdot S(x + \Delta x) \\
+&- E(x) \cdot u_t(x, t) \cdot S(x)
+\end{aligned} \]
+由中值定理可知, $\forall \xi \in (x, x + \Delta x)$, 使得
+\[
+\implies \Delta x \cdot \frac{\partial^2 u}{\partial t^2}(\bar x, t)
+\cdot \rho(\bar x) \cdot S(\bar x) =
+\frac{\partial}{\partial x}\left(
+  E(\xi) \cdot u_x(\xi, t) \cdot S(\xi)
+\right) \Delta x
+\]
+消去 $\Delta x$,
+\[
+\implies \frac{\partial^2 u}{\partial t^2}(\bar x, t)
+\cdot \rho(\bar x) \cdot S(\bar x) =
+\frac{\partial}{\partial x}\left( E(\xi) \cdot u_x(\xi, t) \cdot S(\xi) \right)
+\]
+当 $\Delta x \to 0$ 时, 有
+\[
+\frac{\partial}{\partial t}\left(
+  \rho(x)S(x) \cdot \frac{\partial u}{\partial t}(x, t)
+\right) =
+\frac{\partial}{\partial x}\left( E(x) S(x) \cdot u_x(x, t)\right)
+\]
+又 $S(x)$ 恒为常数, 进一步化简得
+\[
+\frac{\partial}{\partial t}\left( \rho(x)\cdot u_t(x, t) \right) =
+\frac{\partial}{\partial x}\left( E(x) \cdot u_x(x, t) \right).
+\]
+\qed
+
+%==============================================================================%
+%******************************************************************************%
+%==============================================================================%
 \paragraph{Ex 5.}
-% 23456789----------0123456789----------0123456789----------0123456789----------
 试证明圆锥形杆的微小纵振动方程是
 \[
 \rho (1 - \frac{x}{h})^2 \frac{\partial^2 u}{\partial t^2}
@@ -19,13 +96,72 @@
 \]
 其中 $h$ 是圆锥的高, $\rho$, $E$ 分别是它的密度与杨氏模量, 且 $\rho$, $E$ 为常数.
 
+\solution 由上一题可知:
+\[
+\frac{\partial}{\partial t}\left( \rho(x)S(x) \cdot u_t(x, t) \right) =
+\frac{\partial}{\partial x}\left( E(x) S(x) \cdot u_x(x, t)\right)
+\]
+此时, $S(x) = S(0)\left(1 - \frac{x}{h}\right)^2$, $S(0)$ 表示圆锥底的面积, 代入
+上式得
+\[
+\frac{\partial}{\partial t}\left(
+  \rho(x) S_0\left(1 - \frac{x}{h}\right)^2 \cdot u_t(x, t)
+\right) =
+\frac{\partial}{\partial x}\left(
+  E(x) S_0\left(1 - \frac{x}{h}\right)^2 \cdot u_x(x, t)
+\right)
+\]
+整理得到
+\[
+u_{tt} \rho \left(1 - \frac{x}{h}\right)^2 =
+E\frac{\partial}{\partial x}\left[
+  \left(1 - \frac{x}{h}\right)^2 \cdot u_x
+\right]
+\]
+\qed
+
+%==============================================================================%
+%******************************************************************************%
+%==============================================================================%
 \paragraph{Ex 7.}
-% 23456789----------0123456789----------0123456789----------0123456789----------
 为了推断地球的年龄, 曾有人设想以下一个模型: 假设地球是由古时候一团炽热的岩浆逐渐
 冷却而成的, 岩浆温度为 $1200\ ^\circ \text{C}$, 表面温度 $0\ ^\circ \text{C}$,
 $a^2 = \frac{k}{cp} = 6 \times 10^{-7} \text{m}^2/\text{s}$, 试列出地球冷却这个
 热传导过程所满足的定解问题.
 
+\solution 建立球坐标系 $(r, \theta, \phi)$:
+\[ \left\{ \begin{aligned}
+r^2 &= x^2 + y^2 + z^2 \\
+\theta &= \arctan \frac{y}{x} \\
+\phi &= \arctan \frac{z}{r}
+\end{aligned} \right. \]
+\[ \begin{aligned} \implies &
+\frac{\partial u}{\partial x} = \frac{x}{r} \frac{\partial u}{\partial r}, 
+\frac{\partial u}{\partial y} = \frac{y}{r} \frac{\partial u}{\partial r}, 
+\frac{\partial u}{\partial z} = \frac{z}{r} \frac{\partial u}{\partial r} \\
+\implies &
+\Delta u = \frac{\partial^2 u}{\partial r^2}
+  + \frac{2}{r} \frac{\partial u}{\partial r} \\
+\implies &
+\frac{\partial u}{\partial t} - a^2 \left(
+  \frac{\partial^2 u}{\partial r^2} + \frac{2}{r} \frac{\partial u}{\partial r}
+  \right) = 0, \\
+& r \geq 0, \theta \in [0, 2\pi],
+  \phi \in [-\frac{\pi}{2}, \frac{\pi}{2}], (r, \theta, \phi) \in \Omega
+\end{aligned} \]
+注意到初始条件 $u|_{t=0} = 1200$, $u|_{\partial \Omega} = 0$, 联立方程即得:
+\[ \left\{ \begin{aligned} 
+&\frac{\partial u}{\partial t} - a^2 \left(
+  \frac{\partial^2 u}{\partial r^2} + \frac{2}{r} \frac{\partial u}{\partial r}
+  \right) = 0 \\
+&u|_{t=0} = 1200 \\
+&u|_{\partial \Omega} = 0
+\end{aligned} \right. \]
+\qed
+
+%==============================================================================%
+%******************************************************************************%
+%==============================================================================%
 \paragraph{Ex 10.}
 % 23456789----------0123456789----------0123456789----------0123456789----------
 一条从西向东无穷延伸的传送带, 运转速度为 $a$, 开始运转时传送带上空无一物, 然后在
@@ -33,14 +169,73 @@ $a^2 = \frac{k}{cp} = 6 \times 10^{-7} \text{m}^2/\text{s}$, 试列出地球冷�
 送带加煤, 试列出在煤的传输过程中, 煤的质量分布所满足的微分方程和定解条件
 ({\bf 提示:} 煤的传输适合质量守恒定律).
 
+\solution 设 $u = u(x, t)$ 表示其质量分布:
+\[
+\frac{\partial u}{\partial t} + a\frac{\partial u}{\partial x} = 0, x > 0, t > 0
+\]
+添加初值条件 $u(x, 0) = 0$, $x \geq 0$, $u(0, t) = A(1+\sin t)$, $t\geq 0$, 得到
+方程
+\[ \left\{ \begin{aligned} 
+&\frac{\partial u}{\partial t} + a\frac{\partial u}{\partial x} = 0,
+  x \geq 0, t \geq 0 \\
+&u(x, 0) = 0 \\
+&u(0, t) = A(1+\sin t)
+\end{aligned} \right. \]
+\qed
 
+%==============================================================================%
+%******************************************************************************%
+%==============================================================================%
 \paragraph{Ex 11.}
-% 23456789----------0123456789----------0123456789----------0123456789----------
 写出连接平面上两点 A, B 的短程线所满足的变分问题. 若 A 的坐标为 $(0, 0)$, B 的坐
 标为 $(3, 5)$, 试求出该变分问题的解.
 
+\solution 设 $AB$ 的方程为 $y = f(x)$, $x \in [a, b]$, 则 $AB$ 的距离为
+\[
+|\bar{AB}| = \diff\ (f)|_A^B = \int_{x_A}^{x_B} \sqrt{1 + f'^2(x)} \diff x
+\]
+其中 $x_A$, $x_B$ 分别是点 $A$ 与点 $B$ 的横坐标.
+
+变分问题为 
+\[
+\diff f^* = \min_{f \in \mathcal M} \diff f
+\]
+其中 $\mathcal M$ 是函数集合
+$\mathcal M = \{f | f \in C^1[a, b], f(x_{A, B}) = y_{A, B}\}$.
+
+考查 $\forall v \in \mathcal M$, 有 $\forall \epsilon \in \mreal$, 满足
+\[
+J(\epsilon) = \diff\ (f^* + \epsilon v) \geq \diff\ (f^*) = J(0)
+\]
+又由于
+\[
+J(\epsilon) = \int_b^a \sqrt{1 + \left(f^*_x + \epsilon v_x\right)^2} \diff x
+\]
+对 $J(\cdot)$ 求导, 得:
+\[ \begin{aligned}
+\implies J'(\epsilon)
+&= \int_b^a \frac{1}{2} \cdot
+  \frac{2 (f^*_x + \epsilon v_x) v_x}{1 + \left(f^*_x + \epsilon v_x\right)^2}
+  \diff x \\
+J'(0) &= \int_b^a
+  \frac{f^*_x v_x}{\sqrt{1 + (f^*_x)^2}} \diff x \\
+&= \int_b^a
+  \left[ \left( \frac{f^*_x}{\sqrt{1 + (f^*_x)^2}} \right)_x \diff x - v \right]
+  = 0
+\end{aligned} \]
+由于 $v$ 为任意量, 故有
+\[
+\frac{\partial}{\partial x}\left( \frac{f_x}{\sqrt{1 + f_x^2}} \right) = 0
+\implies f_x = C \cdot \sqrt{1 + f_x^2}
+\]
+其中 $C$ 为常数. 此时有 $f_x = \tilde c$, 即最优解 $f^*$ 满足
+$f^* = \tilde c x + b$ 的形式, 代入 $A(0, 0)$, $B(3, 5)$, 得 $f^* = (5 / 3) x$.
+\qed
+
+%==============================================================================%
+%******************************************************************************%
+%==============================================================================%
 \paragraph{Ex 14.}
-% 23456789----------0123456789----------0123456789----------0123456789----------
 设
 \[
 J(v) = \frac{1}{2} \int_{\Omega} (|\nabla v|^2 + v^2)\diff x
@@ -59,9 +254,9 @@ J(u)= \min_{v \in M} J(v).
 \int_{\Omega} (\nabla u \cdot \nabla v + u \cdot v - fv)\diff x
 + \int_{\partial \Omega} (\alpha(x) uv-gv )\diff s = 0.
 \]
-% 23456789----------0123456789----------0123456789----------0123456789----------
+
 问题 III(第三边值问题): 求 $u \in C^2 \cap C^1(\bar \Omega)$, 满足以下边值问题
-\[
+\[\{
 \begin{cases}
 - \Delta u + u = f, & x \in \Omega \\
 \frac{\partial u}{\partial n} + \alpha (x) u = g, & x \in \partial \Omega
@@ -71,4 +266,89 @@ J(u)= \min_{v \in M} J(v).
 (1) 证明问题 I 与问题 II 等价.
 (2) 当 $u \in C^2 \cap C^1(\bar \Omega)$ 时, 证明问题 I, II, III 等价.
 
+\solproof (1): (I) $\Rightarrow$ (II) (充分性):
+设 $u$ 为最小值点, $\forall v \in M$, $\forall \epsilon \in \mreal$,
+$\phi(\epsilon) = J(u + \epsilon v)$, $\phi'(0) = 0$, 即
+
+\[ \begin{aligned}
+\phi(\epsilon) &= J(u + \epsilon v) = \frac12 \int_\Omega 
+  \left[ |\nabla u + \epsilon \nabla v|^2 + (u + \epsilon v)^2 \right]
+  \diff x \\
+&+ \frac12 \int_{\partial\Omega} \alpha(x) (u + \epsilon v)^2 \diff s
+  - \int_\Omega f(u + \epsilon v) \diff x
+  - \int_{\partial\Omega} g(u + \epsilon v) \diff s
+\end{aligned} \]
+代入求导可得
+\[ \begin{aligned}
+\phi'(0) &= J(u) = \frac12\cdot 2\cdot \int_\Omega
+    \left( \nabla u \cdot \nabla v + uv \right) \diff x
+  + \frac12\cdot 2\cdot \int_{\partial\Omega} \alpha(x)uv \diff s \\
+&- \int_\Omega fv\diff x - \int_{\partial\Omega} gv\diff s \\
+&= 0
+\end{aligned} \]
+化简
+\[ \implies
+\int_\Omega \left( \nabla u \cdot \nabla v + uv -fv \right) \diff x
++ \int_{\partial\Omega} \left( \alpha(x)uv - gv \right) \diff s = 0
+\]
+即证 (I) $\Rightarrow$ (II).
+
+\noindent (I) $\Leftarrow$ (II) (必要性):
+同时假设 $u$ 满足 (II), $\forall v \in M$, $J(v) = J(u + v - u)$, 即
+\[ \begin{aligned}
+J(v) &= \frac12 \int_\Omega \left( |\nabla u|^2 + u^2 \right) \diff x
+  + \int_\Omega\left[|\nabla u\cdot(\nabla v-\nabla u)|+u(v-u)\right]\diff x \\
+&+ \frac12 \int_\Omega \left( |\nabla (v - u)|^2 + (v - u)^2 \right) \diff x
+  - \int_\Omega fu \diff x - \int_\Omega f(v - u) \diff x \\
+&+ \frac12 \int_{\partial\Omega} \alpha(x) u^2 \diff s
+  + \int_{\partial\Omega} \alpha(x) u(v - u) \diff s
+  + \frac12 \int_{\partial\Omega} \alpha(x) (v - u)^2 \diff s \\
+&- \int_{\partial\Omega} gu \diff s - \int_{\partial\Omega} g(v - u) \diff s \\
+&= J(u) + \int_\Omega
+  \left[ |\nabla u \cdot (\nabla v - \nabla u)| + u(v - u) \right] \diff x
+  + \frac12 \int_{\partial\Omega} \alpha(x) (v - u)^2 \diff s
+\end{aligned} \]
+又由于
+\[ \begin{aligned}
+& \int_\Omega\left[|\nabla u\cdot(\nabla v-\nabla u)|+u(v-u)\right]\diff x\geq 0
+& (\text{平方项}) & \ \\
+& \int_{\partial\Omega} \alpha(x) (v - u)^2 \diff s \geq 0
+& (\text{平方项} \times \text{正数}) & \ \\
+& \implies & J(v) \geq J(u)
+\end{aligned} \]
+即证.
+
+\solproof (2): (II) $\Rightarrow$ (III) (充分性):
+对 $\forall v \in C_0^\infty(\Omega) \subset M$, 若 (II) 满足, 则有:
+\[ \begin{aligned}
+& \int_\Omega\left[ \nabla u\cdot\nabla v + uv - fv \right] \diff x = 0 \\
+\implies & \int_\Omega (-\Delta u + u - f) v \diff x = 0 \\
+\implies & -\Delta u + u - f = 0
+\end{aligned} \]
+同时
+\[ \begin{aligned}
+& \int_{\partial\Omega}\left[ \alpha(x) uv - gv \right] \diff s = 0 \\
+\implies & \int_{\partial\Omega}
+  (\frac{\partial u}{\partial n} + \alpha u - g) v \diff s = 0 \\
+\implies & \frac{\partial u}{\partial n} + \alpha u - g = 0
+\end{aligned} \]
+即证.
+
+\noindent (II) $\Leftarrow$ (III) (必要性):
+对式子 $-\Delta u + u = f$ 两边同乘 $v$, $\forall v \in M$, 有
+\[
+-\Delta uv + uv = fv
+\]
+积分得
+\[
+\int_\Omega -\Delta uv + uv \diff x = \int_\Omega fv \diff x
+\]
+同理, 对式子 $u_n + \alpha(x) u = g$ 两边同乘 $v$ 之后积分, 有
+\[
+\int_{\partial\Omega} \frac{\partial u}{\partial n}v \diff s
+  + \int_{\partial\Omega} \alpha(x)uv \diff s
+  = \int_{\partial\Omega} gv \diff s
+\]
+累加合并即得其解.
+\qed
 \endinput
