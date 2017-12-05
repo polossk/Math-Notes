@@ -1,17 +1,11 @@
 % pdf 设置区
 %---------------------------------纸张大小设置---------------------------------%
 \usepackage{geometry}
-\geometry{b5paper,left=2cm,right=2cm,top=2.05cm,bottom=2.05cm}
+\geometry{a4paper,left=1.91cm,right=1.91cm,top=2.05cm,bottom=2.05cm}
 %------------------------------------------------------------------------------%
 
 
 %----------------------------------必要库支持----------------------------------%
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{amsfonts}
-\usepackage{mathrsfs}
-\usepackage{bm}
 \usepackage{xcolor}
 \usepackage{tikz}
 \usepackage{layouts}
@@ -31,6 +25,7 @@
     % 在此处修改打开文件操作
     \hypersetup{
         bookmarks=true,         % show bookmarks bar?
+        bookmarksopen=true,     % expanded all bookmark?
         pdftoolbar=true,        % show Acrobat’s toolbar?
         pdfmenubar=true,        % show Acrobat’s menu?
         pdffitwindow=true,      % window fit to page when opened
@@ -40,7 +35,7 @@
     % 在此处添加文章基础信息
     \hypersetup{
         pdftitle={},
-        pdfauthor={shen, cfrpg},
+        pdfauthor={polossk},
         pdfsubject={},
         pdfcreator={XeLaTeX},
         pdfproducer={XeLaTeX},
@@ -206,18 +201,6 @@
 %------------------------------------------------------------------------------%
 
 
-%-------------------------------数学符号格式控制-------------------------------%
-\usepackage{bm}
-\def\mathbi#1{\textbf{\em #1}}
-% Caligraphic letters:      \mathcal{A}
-% Mathbb letters:           \mathbb{A}
-% Mathfrak letters:         \mathfrak{A}
-% Math Sans serif letters:  \mathsf{A}
-% Math bold letters:        \mathbf{A}
-% Math bold italic letters: \mathbi{A}
-%------------------------------------------------------------------------------%
-
-
 %-------------------------------数学特殊符号控制-------------------------------%
 \input{math-symbols}
 %------------------------------------------------------------------------------%
@@ -243,7 +226,7 @@
     keywordstyle=\color{blue},
     numberstyle=\color{purple},
     commentstyle=\color{olive},
-    stringstyle=\color{orange}\ttfamily,
+    stringstyle=\color{brickred}\ttfamily,
     showspaces=false,
     showtabs=false,
     framexrightmargin=5pt,
