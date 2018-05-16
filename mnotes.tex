@@ -10,8 +10,15 @@
 %------------------------------------------------------------------------------%
 \input{book-setting}
 %------------------------------------------------------------------------------%
+\newtheorem*{solution}{解}
+\newtheorem*{solproof}{证明}
+\newtheorem*{defination}{定义}
+\renewcommand{\qed}{\ifmmode\qed\else\hfill\proofSymbol\fi}
+%------------------------------------------------------------------------------%
 \begin{document}
 %------------------------------------------------------------------------------%
+\pagenumbering{Roman}
+\frontmatter
 \thispagestyle{fancy}
 \begin{titlepage}
     \vspace*{4em}
@@ -23,7 +30,9 @@
         {\large \today} \\
     \end{center}
 \end{titlepage}
-\clearpage
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\fHei 目录}
 \tableofcontents
 \clearpage
 %------------------------------------------------------------------------------%
@@ -31,9 +40,7 @@
 %---------------------------------------
 % 文章正文
 %---------------------------------------
-\newcommand\solution{\par \noindent {\bf 解:\ }}
-\newcommand\solproof{\par \noindent {\bf 证明:\ }}
-
+\mainmatter
 \input{chapters/chapter-01-Equations-of-Mathematical-Physics/main.tex}
 \input{chapters/chapter-99-misc/main.tex}
 
