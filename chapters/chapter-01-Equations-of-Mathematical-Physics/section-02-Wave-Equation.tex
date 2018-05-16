@@ -9,13 +9,13 @@ u_t + 2u_x + u = xt, & t > 0, -\infty < x < \infty \\
 \mfwhen{u}{t=0} = 2 - x, & -\infty < x < \infty
 \end{cases} \]
 
-\solution
+\begin{solution}
 易知特征线 $\diff x /\diff t = 2 - x$, 即 $x = x(t, c) = 2t + c$.
 
 沿特征线方向, 有
 \[ \mequlist{
-	\frac{\diff u(x(t, c), t)}{\diff t} &= xt - u = 2t^2 + ct - u(x(t, c), t) \\
-	u(c, 0) &= 2 - c;
+    \frac{\diff u(x(t, c), t)}{\diff t} &= xt - u = 2t^2 + ct - u(x(t, c), t) \\
+    u(c, 0) &= 2 - c;
 } \]
 原方程可以化简为:
 \[ \begin{aligned}
@@ -26,6 +26,8 @@ u_t + 2u_x + u = xt, & t > 0, -\infty < x < \infty \\
   \me^{-t} \\
 \end{aligned} \]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -39,7 +41,7 @@ u_{tt} - a^2 u_{xx} + cu = f(x, t), & -\infty < x < \infty, t > 0 \\
 \end{cases} \]
 解的唯一性, 其中 $c$ 为常数.
 
-\solution
+\begin{solution}
 对于波动方程左右两边同乘上 $u_t$, 得到
 $(u_{tt} - a^2 u_{xx} + cu) u_t = f(x, t) u_t$, 设其特征锥为 $K$,
 $0 \leq \tau \leq t_0$, $K_\tau = K \cap \{0 \leq \tau \leq t_0\}$,
@@ -64,53 +66,53 @@ $\Omega_\tau = K \cap \{t = \tau\}$, 令方程在 $K_\tau$ 积分, 得到
 对左式应用 Green 公式, 有
 \[
 J = \oint_{\partial K_\tau} \mclosuresquare{
-	a^2 u_t u_x \diff t + \frac12 \mclosure{
-		u_t^2 + c u^2 + a^2 u_x^2
-	} \diff x
+    a^2 u_t u_x \diff t + \frac12 \mclosure{
+        u_t^2 + c u^2 + a^2 u_x^2
+    } \diff x
 } = \iint_{K_\tau} f u_t \diff x \diff t
 \]
 其中 $\partial K_\tau$ 为锥台 $K_\tau$ 的边界, 如果用 $\Gamma_{\tau_1}$ 与
 $\Gamma_{\tau_2}$ 表示锥台的面, 则有
 \[ \begin{aligned}
 J &= \int_{\partial K_\tau} \mclosure{
-	u_t^2 + c u^2 + a^2 u_x^2
+    u_t^2 + c u^2 + a^2 u_x^2
 } \diff x - \int_{\Omega_0} \mclosure{
-	\psi_t^2 + c \phi^2 + a^2 \phi_x^2
+    \psi_t^2 + c \phi^2 + a^2 \phi_x^2
 } \diff x \\&- \int_{\Gamma_{\tau_1}^+ \cup \Gamma_{\tau_1}^+} \mclosurebrace{
-	a^2 u_t u_x \diff t + \frac12 \mclosuresquare{
-		u_t^2 + c u^2 + a^2 u_x^2
-	} \diff x
+    a^2 u_t u_x \diff t + \frac12 \mclosuresquare{
+        u_t^2 + c u^2 + a^2 u_x^2
+    } \diff x
 }\\
 &= J_1 + J_2 + J_3
 \end{aligned} \]
 考察其最后一项
 \[ \begin{aligned}
 J_3 &= -\int_{\tau_1} \mclosurebrace{
-	a^2 u_t u_x + \frac12 \mclosure{
-		u_t^2 + c u^2 + a^2 u_x^2
-	} a
+    a^2 u_t u_x + \frac12 \mclosure{
+        u_t^2 + c u^2 + a^2 u_x^2
+    } a
 } \diff t \\	&+ \int_{\tau_2} \mclosurebrace{
-	a^2 u_t u_x + \frac12 \mclosure{
-		u_t^2 + c u^2 + a^2 u_x^2
-	} (-a)
+    a^2 u_t u_x + \frac12 \mclosure{
+        u_t^2 + c u^2 + a^2 u_x^2
+    } (-a)
 } \diff t \\
 &= -\int_{\tau_1} \mclosuresquare{
-	\frac{a}{2} \mclosure{
-		u_t + a u_x
-	}^2 + \frac{a c}{2}u^2
+    \frac{a}{2} \mclosure{
+        u_t + a u_x
+    }^2 + \frac{a c}{2}u^2
 } \diff t + \int_{\tau_2} \mclosuresquare{
-	\frac{a}{2} \mclosure{
-		u_t - a u_x
-	}^2 + c u^2
+    \frac{a}{2} \mclosure{
+        u_t - a u_x
+    }^2 + c u^2
 } \diff t \\
 &= -\int_{\tau_1} \mclosuresquare{
-	\frac{a}{2} \mclosure{
-		u_t + a u_x
-	}^2 + \frac{a c}{2}u^2
+    \frac{a}{2} \mclosure{
+        u_t + a u_x
+    }^2 + \frac{a c}{2}u^2
 } \diff t + \int_{\tau_2} \mclosuresquare{
-	\frac{a}{2} \mclosure{
-		u_t - a u_x
-	}^2 + \frac{a c}{2}u^2
+    \frac{a}{2} \mclosure{
+        u_t - a u_x
+    }^2 + \frac{a c}{2}u^2
 } \diff t \\
 &\geq 0
 \end{aligned} \]
@@ -126,8 +128,8 @@ $F(\tau) = \int_\Omega \mclosure{\psi^2 + a^2 \phi_x^2 + c\phi^2} \diff x
 +\iint_{K_\tau} f^2 \diff x \diff t$.
 由 Gronwall 不等式可得
 \[ \mequlist{
-	\fracdiff{G(\tau)}{\tau} &= \me^\tau F(\tau) \\
-	G(\tau) &\leq (\me^\tau - 1) F(\tau)
+    \fracdiff{G(\tau)}{\tau} &= \me^\tau F(\tau) \\
+    G(\tau) &\leq (\me^\tau - 1) F(\tau)
 } \]
 因此, 当 $\phi = \psi = f \equiv 0$ 时, $u \equiv 0$, 故其解唯一, 即证.
 
@@ -158,21 +160,21 @@ v_{tt} - a^2 (v_{xx} + v_{yy}) &= u_{tt} \exp\mclosure{\frac{\sqrt{c}}{a}y\mi}
 则由泊松公式可得该方程的解为
 \[ \begin{aligned}
 v(x, y, t) &= \frac1{2\pi a} \fracpartials{t} \mclosuresquare{
-	\iint_{\sum a t(x)} \frac{
-		\phi(x_1) \exp\mclosure{\frac{\sqrt{c}}{a}y\mi}
-	}{
-		\sqrt{a^2 t^2 - (x_1 -x)^2 - (y_1 - y)^2}
-	} \diff x_1 \diff y_1
+    \iint_{\sum a t(x)} \frac{
+        \phi(x_1) \exp\mclosure{\frac{\sqrt{c}}{a}y\mi}
+    }{
+        \sqrt{a^2 t^2 - (x_1 -x)^2 - (y_1 - y)^2}
+    } \diff x_1 \diff y_1
 } \\
 &+ \frac1{2\pi a} \iint_{\sum a t(x)} \frac{
-	\psi(x_1) \exp\mclosure{\frac{\sqrt{c}}{a}y\mi}
+    \psi(x_1) \exp\mclosure{\frac{\sqrt{c}}{a}y\mi}
 }{
-	\sqrt{a^2 t^2 - (x_1 -x)^2 - (y_1 - y)^2}
+    \sqrt{a^2 t^2 - (x_1 -x)^2 - (y_1 - y)^2}
 } \diff x_1 \diff y_1 \\
 &+ \frac1{2\pi a} \int_0^t \iint_{\sum a (t - \tau)(x)} \frac{
-	f(x_1 \cdot \tau) \exp\mclosure{\frac{\sqrt{c}}{a}}
+    f(x_1 \cdot \tau) \exp\mclosure{\frac{\sqrt{c}}{a}}
 }{
-	\sqrt{a^2 (t-\tau)^2 - (x_1 -x)^2 - (y_1 - y)^2}
+    \sqrt{a^2 (t-\tau)^2 - (x_1 -x)^2 - (y_1 - y)^2}
 } \diff x_1 \diff y_1 \diff \tau \\
 \end{aligned} \]
 于是 $u(x, t) = v(x, y, t) \exp\mclosure{\frac{\sqrt{c}}{a}y\mi}$, 其中
@@ -181,6 +183,8 @@ v(x, y, t) &= \frac1{2\pi a} \fracpartials{t} \mclosuresquare{
 &\sum a (t - \tau)(x) = (x_1 -x)^2 + (y_1 - y)^2 \leq a^2 (t - \tau)^2
 \end{aligned} \]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -195,21 +199,21 @@ v(x, y, t) &= \frac1{2\pi a} \fracpartials{t} \mclosuresquare{
 \end{cases} \]
 解的唯一性, 其中 $b(x, t)$, $c(x, t)$ 都是有解连续函数.
 
-\solution
+\begin{solution}
 原方程左边右边同时乘以 $u_t$, 并在 $K_\tau$ 上积分, 得
 \[ \begin{aligned}
 & \iint_{K_\tau} u_t \mclosure{
-	u_{tt} - a^2 u_{xx} + b u_x + c u_t
+    u_{tt} - a^2 u_{xx} + b u_x + c u_t
 } \diff x \diff t = \iint_{K_\tau} f(x, t) u_t \diff x \diff t \\
 \implies & \iint_{K_\tau} u_t \mclosuresquare{
-	\frac12 \fracpartials{t} \mclosure{u_t^2 + a^2 u_x^2}
-	+ c u_t^2 + b u_t u_x - a^2 \fracpartials{x} \mclosure{u_t u_x}
+    \frac12 \fracpartials{t} \mclosure{u_t^2 + a^2 u_x^2}
+    + c u_t^2 + b u_t u_x - a^2 \fracpartials{x} \mclosure{u_t u_x}
 } \diff x \diff t = \iint_{K_\tau} f u_t \diff x \diff t
 \end{aligned} \]
 对上式应用格林公式有
 \[ \begin{aligned}
 J &= -\oint_{\partial K_\tau} \mclosurebrace{
-	a^2 u_t u_x \diff t + \frac12 \mclosuresquare{ u_t^2 + a^2 u_x^2 } \diff x
+    a^2 u_t u_x \diff t + \frac12 \mclosuresquare{ u_t^2 + a^2 u_x^2 } \diff x
 } \\
 &= \iint_{K_\tau} \mclosure{ f u_t - (u_t^2 - b u_t u_x) } \diff x \diff t
 \end{aligned} \]
@@ -218,21 +222,21 @@ J &= -\oint_{\partial K_\tau} \mclosurebrace{
 J &= \frac12 \int_{\Omega_\tau} \mclosure{u_t^2 + cu^2 + a^2 u_x^2} \diff x
 - \int_{K_\tau} \mclosure{\psi^2 + c\phi^2 + a^2 \phi_x^2} \diff x \\
 &- \int_{\Gamma_{\tau_1}^{+}\cup\Gamma_{\tau_2}^{+}} \mclosuresquare{
-	a^2 u_t u_x \diff t + \frac12 \mclosure{
-		u_t^2 + c u^2 + a^2 u_x^2
-	} \diff x
+    a^2 u_t u_x \diff t + \frac12 \mclosure{
+        u_t^2 + c u^2 + a^2 u_x^2
+    } \diff x
 } \\
 &= J_1 + J_2 + J_3 \\
 J_3 &= -\frac{a}{2} \int_{\Gamma_{\tau_1}} \mclosure{
-	u_t + a u_x
+    u_t + a u_x
 }^2 \diff t + \frac{a}{2} \int_{\Gamma_{\tau_2}} \mclosure{
-	u_t - a u_x
+    u_t - a u_x
 }^2 \diff t \geq 0
 \end{aligned} \]
 故有
 \[
 J_3 = \iint_{K_\tau} \mclosure{
-	f u_t - (u_t^2 - b u_t u_x)
+    f u_t - (u_t^2 - b u_t u_x)
 } \diff x \diff t - J_1 - J_2 \geq 0
 \]
 整理得
@@ -240,21 +244,23 @@ J_3 = \iint_{K_\tau} \mclosure{
 \int_{\Omega_\tau} \mclosure{ u_t^2 + a^2 u_x^2 } \diff x
 & \leq \int_{\Omega_0} \mclosure{ \psi^2 + a^2 \phi_x^2 } \diff x
  +2 \iint_{K_\tau} \mclosure{
-	f u_t - c u_t^2 - b u_t u_x
+    f u_t - c u_t^2 - b u_t u_x
 } \diff x \diff t \\
 &\leq \int_{\Omega_0} \mclosure{ \psi^2 + a^2 \phi_x^2 } \diff x
  +\iint_{K_\tau} f^2\diff x\diff t +\iint_{K_\tau} u_t^2\diff x\diff t \\
 &\quad+ \max\abs{b} \mclosure{
-	\iint_{K_\tau} u_t^2 \diff x \diff t + \iint_{K_\tau} u_x^2 \diff x \diff t
+    \iint_{K_\tau} u_t^2 \diff x \diff t + \iint_{K_\tau} u_x^2 \diff x \diff t
 } \\
 &\quad+ \max\abs{c} \iint_{K_\tau} u_t^2 \diff x \diff t \\
 &\leq \int_{\Omega_0} \mclosure{ \psi^2 + a^2 \phi_x^2 } \diff x
 +\iint_{K_\tau} f^2\diff x\diff t + M \iint_{K_\tau} \mclosure{
-	u_t^2 + u_x^2
+    u_t^2 + u_x^2
 } \diff x \diff t
 \end{aligned} \]
 用类似方法可证唯一性, 不再赘述
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -267,72 +273,72 @@ u_{tt} = a^2 (u_{xx} + u_{yy} + u_{zz}), \\
 \mfwhen{u_t}{t=0} = x^3 + y^2 z
 \end{cases} \]
 
-\solution
+\begin{solution}
 根据泊松公式, 利用球面坐标系可得
 \[ \begin{aligned}
 &u(x, y, z, t) =
 \frac{1}{4\pi a^2 t} \int_0^{2\pi} \int_0^\pi \Bigl[
-	\mclosure{x + at\sin\theta \cos\phi}^3 \\
-	&\hspace{12em}+\mclosure{y + at\sin\theta \sin\phi}^2 \mclosure{z + at\cos\theta}
+    \mclosure{x + at\sin\theta \cos\phi}^3 \\
+    &\hspace{12em}+\mclosure{y + at\sin\theta \sin\phi}^2 \mclosure{z + at\cos\theta}
 \Bigr] a^2 t^2 \sin\theta \diff\theta \diff\phi\\
 &\hspace{2em}=\frac{a^2 t}{4\pi a^2 t} \int_0^{2\pi} \int_0^\pi \Bigl[
-	x^3 + 3x^2 at\sin\theta \cos\phi + 3x a^2t^2\sin^2\theta \cos^2\phi
-	+a^3t^3\sin^3\theta \cos^3\phi \\
-	&\hspace{10em}+\mclosure{y^2 + 2yat\sin\theta \sin\phi + a^2t^2\sin^2\theta \sin^2\phi}
-	\mclosure{z + at\cos\theta}
+    x^3 + 3x^2 at\sin\theta \cos\phi + 3x a^2t^2\sin^2\theta \cos^2\phi
+    +a^3t^3\sin^3\theta \cos^3\phi \\
+    &\hspace{10em}+\mclosure{y^2 + 2yat\sin\theta \sin\phi + a^2t^2\sin^2\theta \sin^2\phi}
+    \mclosure{z + at\cos\theta}
 \Bigr] \sin\theta t \diff\theta \diff\phi \\
 &\hspace{2em}=\frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi \Bigl[
-	x^3 + 3x^2 at\sin\theta \cos\phi + 3x a^2t^2\sin^2\theta \cos^2\phi
-	+a^3t^3\sin^3\theta \cos^3\phi \\
-	&\hspace{8em}+\mclosure{
-		y^2z + 2yzat\sin\theta \sin\phi + za^2t^2\sin^2\theta \sin^2\phi
-	} \\
-	&\hspace{8em}+\mclosure{
-		y^2at\cos\theta
-		+ 2ya^2t^2\sin\theta \cos\theta \sin\phi
-		+ a^3t^3\sin^2\theta \cos\theta \sin^2\phi
-	}
+    x^3 + 3x^2 at\sin\theta \cos\phi + 3x a^2t^2\sin^2\theta \cos^2\phi
+    +a^3t^3\sin^3\theta \cos^3\phi \\
+    &\hspace{8em}+\mclosure{
+        y^2z + 2yzat\sin\theta \sin\phi + za^2t^2\sin^2\theta \sin^2\phi
+    } \\
+    &\hspace{8em}+\mclosure{
+        y^2at\cos\theta
+        + 2ya^2t^2\sin\theta \cos\theta \sin\phi
+        + a^3t^3\sin^2\theta \cos\theta \sin^2\phi
+    }
 \Bigr] \sin\theta t \diff\theta \diff\phi \\
 \end{aligned} \]
 对每一项求积分, 得
 \[ \begin{aligned}
 J_1 &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	x^3 \sin\theta t
-	\diff\theta \diff\phi 
-	= \frac{1}{4\pi} \int_0^{2\pi} 2x^3t \diff\phi = x^3t \\
+    x^3 \sin\theta t
+    \diff\theta \diff\phi 
+    = \frac{1}{4\pi} \int_0^{2\pi} 2x^3t \diff\phi = x^3t \\
 J_2 &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	3x^2 at^2\sin^2\theta \cos\phi
-	\diff\theta \diff\phi 
-	= \frac{3\pi}{8\pi} \int_0^{2\pi} x^2at^2 \cos\phi \diff\phi = 0 \\
+    3x^2 at^2\sin^2\theta \cos\phi
+    \diff\theta \diff\phi 
+    = \frac{3\pi}{8\pi} \int_0^{2\pi} x^2at^2 \cos\phi \diff\phi = 0 \\
 J_3 &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	3x a^2t^3\sin^3\theta \cos^2\phi
-	\diff\theta \diff\phi 
-	= \frac{1}{\pi} \int_0^{2\pi} xa^2t^2 \cos\phi \diff\phi = xa^2t^3 \\
+    3x a^2t^3\sin^3\theta \cos^2\phi
+    \diff\theta \diff\phi 
+    = \frac{1}{\pi} \int_0^{2\pi} xa^2t^2 \cos\phi \diff\phi = xa^2t^3 \\
 J_4 &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	a^3t^4\sin^4\theta \cos^3\phi
-	\diff\theta \diff\phi 
-	= \frac{3}{32} \int_0^{2\pi} a^3t^4 \cos^3\phi \diff\phi = 0 \\
+    a^3t^4\sin^4\theta \cos^3\phi
+    \diff\theta \diff\phi 
+    = \frac{3}{32} \int_0^{2\pi} a^3t^4 \cos^3\phi \diff\phi = 0 \\
 J_5 &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	y^2z \sin\theta t
-	\diff\theta \diff\phi 
-	= \frac{1}{4\pi} \int_0^{2\pi} y^2z \diff\phi = y^2zt \\
+    y^2z \sin\theta t
+    \diff\theta \diff\phi 
+    = \frac{1}{4\pi} \int_0^{2\pi} y^2z \diff\phi = y^2zt \\
 J_6 &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	2yzat^2\sin^2\theta \sin\phi
-	\diff\theta \diff\phi 
-	= \frac{1}{4} \int_0^{2\pi} yzat^2 \sin\phi \diff\phi = 0 \\
+    2yzat^2\sin^2\theta \sin\phi
+    \diff\theta \diff\phi 
+    = \frac{1}{4} \int_0^{2\pi} yzat^2 \sin\phi \diff\phi = 0 \\
 J_7 &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	za^2t^3\sin^3\theta \sin^2\phi
-	\diff\theta \diff\phi 
-	= \frac{1}{3\pi} \int_0^{2\pi} za^2t^2 \sin^2\phi \diff\phi = \frac13za^2t^3 \\
+    za^2t^3\sin^3\theta \sin^2\phi
+    \diff\theta \diff\phi 
+    = \frac{1}{3\pi} \int_0^{2\pi} za^2t^2 \sin^2\phi \diff\phi = \frac13za^2t^3 \\
 J_8 &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	y^2at^2\mclosure{\sin\theta\cos\theta}
-	\diff\theta \diff\phi = 0 \\
+    y^2at^2\mclosure{\sin\theta\cos\theta}
+    \diff\theta \diff\phi = 0 \\
 J_9 &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	2ya^2t^3 \sin\phi \mclosure{\sin^2\theta \cos\theta}
-	\diff\theta \diff\phi = 0 \\
+    2ya^2t^3 \sin\phi \mclosure{\sin^2\theta \cos\theta}
+    \diff\theta \diff\phi = 0 \\
 J_{10} &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi
-	a^3t^4 \sin^2\phi \mclosure{\sin^3\theta \cos\theta}
-	\diff\theta \diff\phi = 0 \\
+    a^3t^4 \sin^2\phi \mclosure{\sin^3\theta \cos\theta}
+    \diff\theta \diff\phi = 0 \\
 \end{aligned} \]
 因此
 \[ \begin{aligned}
@@ -341,6 +347,9 @@ u(x, y, z, t) &= \sum_i J_i = x^3t + xa^2t^3 + y^2zt + \frac13za^2t^3 \\
 \end{aligned} \]
 故其解为 $u(x, y, z, t) = t(x^3 + y^2z) + a^2t^3(x + z/3)$
 \qed
+\end{solution}
+
+
 %==============================================================================%
 %------------------------------------------------------------------------------%
 %==============================================================================%
@@ -351,27 +360,29 @@ X''(x) + \lambda X(x) = 0, & 0 < x < l \\
 X'(0) = X(l) = 0
 \end{cases} \]
 
-\solution
+\begin{solution}
 设 $X(x) = C_1 \sin \sqrt\lambda x + C_2 \cos \sqrt\lambda x$, 令
 $\mu = \sqrt\lambda$, ($\mu^2 = \lambda$, $\mu > 0$), 有
 $X'(x) = \mu C_1 \cos \mu x - \mu C_2 \sin \mu x$. 带入方程, 有
 \[ \begin{aligned}
 & \mequlist{
-	X'(0) &= \mu C_1\cdot 1 - \mu C_2\cdot 0 = 0,\ \mu^2 = \lambda,\ \mu > 0 \\
-	X(l) &= C_1 \sin \mu l + C_2 \cos \mu l
+    X'(0) &= \mu C_1\cdot 1 - \mu C_2\cdot 0 = 0,\ \mu^2 = \lambda,\ \mu > 0 \\
+    X(l) &= C_1 \sin \mu l + C_2 \cos \mu l
 } \\
 \implies & C_1 = 0,\ C_2 \cdot \cos \mu l = 0 \\
 \implies & \mequlist{
-	C_2 &= 0,\ \text{或} \\
-	\mu l &= \mclosure{n\pi + \frac{\pi}2},\ n \in \mintg^{+} \cup \{0\}
+    C_2 &= 0,\ \text{或} \\
+    \mu l &= \mclosure{n\pi + \frac{\pi}2},\ n \in \mintg^{+} \cup \{0\}
 } \\
 \implies & \mu_n = \frac{(2n+1)\pi}{2l}, \lambda_n = \mclosure{
-	\frac{(2n+1)\pi}{2l}
+    \frac{(2n+1)\pi}{2l}
 }^2, n \in \mintg^{+} \cup \{0\} \\
 \implies & X_n(x) = 0, C_2 \cdot \cos\mclosure{\frac{(2n+1)\pi}{2l}} x \\
 \implies & X_n(x) = C_2 \cdot \cos\mclosure{\frac{(2n+1)\pi}{2l}} x
 \end{aligned} \]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -390,7 +401,7 @@ Lu = 0, (x, t) \in Q \\
 \mfwhen{u}{t=0} = \sin^2 \dfrac{\pi x}{l}, \mfwhen{u_t}{t=0} = x(l - x), 0 \leq x \leq l
 \end{cases} \]
 
-\solution
+\begin{solution}
 令 $u = X(x) \cdot T(t)$, 则原方程可以化为 $Lu = XT'' - a^2 X''T = 0$, 分解得
 \[ \begin{cases}
 T'' + a^2 \lambda T = 0 & t > 0 \\
@@ -406,8 +417,8 @@ $\mu = \sqrt\lambda$, ($\mu^2 = \lambda$, $\mu > 0$), 则有
 $X'(x) = \mu C_1 \cos \mu x - \mu C_2 \sin \mu x$. 代入方程中
 \[ \begin{aligned}
 & \mequlist{
-	X(0) &= \mu C_1\cdot 0 + \mu C_2\cdot 0 = 1,\ \mu^2 = \lambda,\ \mu > 0 \\
-	X'(l) &= \mu C_1 \cos \mu l - \mu C_2 \sin \mu l
+    X(0) &= \mu C_1\cdot 0 + \mu C_2\cdot 0 = 1,\ \mu^2 = \lambda,\ \mu > 0 \\
+    X'(l) &= \mu C_1 \cos \mu l - \mu C_2 \sin \mu l
 } \\
 \implies & C_2 = 0,\ C_1 \cdot \cos \mu l = 0 \\
 \implies & \mu_n = \frac{(2n+1)\pi}{2l} \\
@@ -421,34 +432,36 @@ $u_n = \mclosure{A_n \sin a \mu t + B_n \cos a \mu t} \sin \mu x, (x, t) \in Q$,
 考察边界条件, 当 $t = 0$ 时, 对 $u$ 和 $u_t$ 有
 \[ \begin{aligned}
 u &= \sum \mclosuresquare{
-	\mclosure{A_n \cdot 0 + B_n \cdot 1} \cdot \sin \mu x
+    \mclosure{A_n \cdot 0 + B_n \cdot 1} \cdot \sin \mu x
 } = x(x - 2l) \\
 &= \sum \mclosure{B_n \sin \mu x} = x(x - 2l) \\
 u_t &= \sum \mclosuresquare{
-	\mclosure{a \mu A_n \cos a \mu t - a \mu B_n \sin a \mu t} \cdot \sin \mu x
+    \mclosure{a \mu A_n \cos a \mu t - a \mu B_n \sin a \mu t} \cdot \sin \mu x
 } \\
 &= \sum \mclosuresquare{
-	\mclosure{a \mu A_n \cdot 1 - a \mu B_n \cdot 0} \cdot \sin \mu x
+    \mclosure{a \mu A_n \cdot 1 - a \mu B_n \cdot 0} \cdot \sin \mu x
 } \\
 &= \sum \mclosure{a \mu A_n \cdot \sin \mu x} = 0
 \end{aligned} \]
 分别求解方程, 得到
 \[ A_n = 0, \quad B_n = \frac{
-	\int_0^l x(x-2l)\sin \mu x \diff x
+    \int_0^l x(x-2l)\sin \mu x \diff x
 }{
-	\int_0^l \mclosure{\sin \mu x}^2 \diff x 
+    \int_0^l \mclosure{\sin \mu x}^2 \diff x 
 } \]
 带回原方程, 得到原方程的解
 \[ \begin{aligned}
 u &= \sum \mclosure{B_n \cos a \mu t \sin \mu x} \\
 \text{其中} B_n &= \frac{
-	\int_0^l x(x-2l)\sin \mu x \diff x
+    \int_0^l x(x-2l)\sin \mu x \diff x
 }{
-	\int_0^l \mclosure{\sin \mu x}^2 \diff x 
+    \int_0^l \mclosure{\sin \mu x}^2 \diff x 
 } \\
 \mu &= \frac{(2n+1)\pi}{2l}\\
 \end{aligned} \]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -464,7 +477,7 @@ Lu = 0, (x, t) \in Q \\
 试引进辅助函数, 把边条件齐次化, 设: (a) $\alpha > 0$, $\beta > 0$; (b)
 $\alpha = \beta = 0$.
 
-\solution
+\begin{solution}
 \noindent (第一类边值条件): 构造
 \[w_1 = \frac{l-x}{l}g_1(t) + \frac xl g_2(t)\]
 则有 $v_1 = u - w_1$, 即可完成转换.
@@ -480,6 +493,8 @@ w_3 = \frac{1 + \beta l- \beta x}{\alpha + \beta + \alpha\beta l} g_1(t)
 \]
 则有 $v_3 = u - w_3$, 即可完成转换.
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -492,7 +507,7 @@ Lu = A, (x, t) \in Q \\
 \mfwhen{u}{t=0} = \dfrac{Bx}{l}, \mfwhen{u_t}{t=0} = 0, 0 \leq x \leq l
 \end{cases} \]
 
-\solution
+\begin{solution}
 $\tilde{u} = \tilde{u}(x, t) = X(x) \cdot T(t)$, 且 $\tilde{u}$ 适定于方程组
 \[ \begin{cases}
 L\tilde{u} = \fracpartial{^2\tilde{u}}{t^2} - a^2 \fracpartial{^2\tilde{u}}{x^2}
@@ -502,19 +517,19 @@ L\tilde{u} = \fracpartial{^2\tilde{u}}{t^2} - a^2 \fracpartial{^2\tilde{u}}{x^2}
 \end{cases} \]
 对方程求特征值 $L\tilde{u} = XT'' - a^2 X''T = 0$
 \[ \implies \begin{cases}
-	X'' + \lambda X = 0, & 0 < x < l \\
-	T'' + a^2 \lambda T = 0, & t \geq 0
+    X'' + \lambda X = 0, & 0 < x < l \\
+    T'' + a^2 \lambda T = 0, & t \geq 0
 \end{cases} \]
 对 $X'' + \lambda X = 0$ 代入待定系数解
 $X(x) = C_1 \sin \beta x + C_2 \cos \beta x$,($\beta^2 = \lambda$, $\beta > 0$),
 考察边界条件, 有
 \[ \begin{equlist}
-	X(0) &= C_1 \cdot 0 + C_2 \cdot 1 = 0 \\
-	X(l) &= C_1 \sin \beta l + C_2 \cos \beta l = 0
+    X(0) &= C_1 \cdot 0 + C_2 \cdot 1 = 0 \\
+    X(l) &= C_1 \sin \beta l + C_2 \cos \beta l = 0
 \end{equlist} \]
 \[ \implies \begin{equlist}
-	C_2 &= 0 \\
-	C_1 \sin \beta l &= 0
+    C_2 &= 0 \\
+    C_1 \sin \beta l &= 0
 \end{equlist} \implies
 \beta = \frac{n\pi}{l}, \lambda = \mclosure{\frac{n\pi}{l}}^2
 \]
@@ -525,16 +540,16 @@ $\tilde{u}_n(x, t) = T_n(t)\cdot X(x)
 \[
 \tilde{u} = \sum^\infty_{n = 1} \tilde{u}_n(x, t)
 = \sum^\infty_{n = 1} \mclosuresquare{
- 	\mclosure{A_n \sin a \beta t + B_n \cos a \beta t} \cdot \sin\beta x
+     \mclosure{A_n \sin a \beta t + B_n \cos a \beta t} \cdot \sin\beta x
 }
 \]
 考虑到方程的初值, 有
 \[ \implies \begin{equlist}
 \mfwhen{\tilde{u}}{t=0} &= \sum^\infty_{n = 1} \mclosuresquare{
-	\mclosure{A_n \cdot 0 + B_n \cdot 1} \cdot \sin\beta x
+    \mclosure{A_n \cdot 0 + B_n \cdot 1} \cdot \sin\beta x
 } \\
 \mfwhen{\tilde{u}_t}{t=0} &= \sum^\infty_{n = 1} \mclosuresquare{
-	a \beta \mclosure{A_n \cdot 1 + B_n \cdot 0} \cdot \sin\beta x
+    a \beta \mclosure{A_n \cdot 1 + B_n \cdot 0} \cdot \sin\beta x
 }
 \end{equlist} \]
 \[ \implies \begin{equlist}
@@ -560,10 +575,10 @@ $\mathcal{F}u = \sum^\infty_{n=1} u_n \sin\frac{n\pi}{l}x$, $u_n$ 为 Fourier系
 记 $w_n = \frac{an\pi}{l}$, 综上, 有
 \[ \begin{aligned}
 \tilde{u}_n(t) &= \frac{1}{w_n} \int_0^t \mclosuresquare{
-	\frac{2}{l} \int_0^l A \sin \frac{n\pi}{l}x \diff x
+    \frac{2}{l} \int_0^l A \sin \frac{n\pi}{l}x \diff x
 } \cdot \sin w_n (t - \tau) \diff \tau \sin \frac{n\pi}{l} x \\
 \tilde{u}(t) &= \sum_{n=0}^\infty u_n(t) = \sum_{n=0}^\infty \frac{
-	4 A (1 -\cos w_n t) }{ (2n+1)a\pi w_n } \cdot  \sin \frac{n\pi}{l}x 
+    4 A (1 -\cos w_n t) }{ (2n+1)a\pi w_n } \cdot  \sin \frac{n\pi}{l}x 
 \end{aligned}\]
 \[ \begin{aligned} \implies
 \tilde{u}(t) &= \sum_{n=0}^\infty \frac{4A(1 -\cos w_n t)}{(2n+1)a\pi w_n}
@@ -571,6 +586,8 @@ $\mathcal{F}u = \sum^\infty_{n=1} u_n \sin\frac{n\pi}{l}x$, $u_n$ 为 Fourier系
 u(t) &= \tilde{u}(t) + \frac{B}{l} x, w_n = \frac{an\pi}{l}
 \end{aligned}\]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -578,7 +595,7 @@ u(t) &= \tilde{u}(t) + \frac{B}{l} x, w_n = \frac{an\pi}{l}
 \paragraph{Ex 28.}
 用能量不等式证明一维波动方程带有第三边值条件的初边值问题解的唯一性.
 
-\solution
+\begin{solution}
 $u$ 适定于方程
 \[ \begin{cases}
 u_{tt} - a^2 u_{xx} = f \\
@@ -599,29 +616,29 @@ u_{tt} - a^2 u_{xx} = f \\
 套用 Green 公式
 \[
 J = -\oint_{\partial Q_r} \mclosuresquare{
-	\mclosure{\frac{1}{2} u_t^2 + \frac{1}{2} a^2 u_x^2} \diff x
-	+ a^2 u_t u_x \diff t
+    \mclosure{\frac{1}{2} u_t^2 + \frac{1}{2} a^2 u_x^2} \diff x
+    + a^2 u_t u_x \diff t
 } = \iint_{Q_r} u_t f \diff x \diff t
 \]
 \[ \begin{aligned}
 J &= J_1 + J_2 + J_3 \\
 &= \frac{1}{2} \int_{\Omega_r} \mclosuresquare{
-	\mclosure{u_t^2} + a^2 \mclosure{u_x^2}
+    \mclosure{u_t^2} + a^2 \mclosure{u_x^2}
 } \diff x - \frac{1}{2} \int_{\Omega_0} \mclosuresquare{
-	\mclosure{\psi^2} + a^2 \mclosure{\phi_x^2}
+    \mclosure{\psi^2} + a^2 \mclosure{\phi_x^2}
 } \diff x \\
 &= \int_{\Gamma_{\tau_1} \cup \Gamma_{\tau_2}} \mclosurebrace{
-	a^2 u_t u_x \diff t + \frac{a^2}{2} \mclosuresquare{
-		\mclosure{u_t^2} + \mclosure{u_x^2}
-	} \diff x
+    a^2 u_t u_x \diff t + \frac{a^2}{2} \mclosuresquare{
+        \mclosure{u_t^2} + \mclosure{u_x^2}
+    } \diff x
 }
 \end{aligned} \]
 在 $\Gamma_{\tau_1}$ 上, $\diff x = 0$, $u_x = \alpha u$, 故有
 \[ \begin{aligned}
 -\int_{\Gamma_{\tau_1}^{+}} &= \int_0^{\tau} \mfwhen{
-	\mclosure{a^2 u_t \alpha u}
+    \mclosure{a^2 u_t \alpha u}
 }{x=0} \diff t = \frac{\alpha a^2}{2} \mfwhen{
-	\mclosure{\int_0^\tau \fracpartials{t} \mclosure{u^2} \diff t}
+    \mclosure{\int_0^\tau \fracpartials{t} \mclosure{u^2} \diff t}
 }{x=0} \\
 &= \frac{\alpha a^2}{2} \mclosuresquare{u^2(0, t) - \phi^2(0)}
 \end{aligned} \]
@@ -642,14 +659,20 @@ J &= J_1 + J_2 + J_3 \\
 \[ \begin{aligned}
 \int_0^l \mfwhen{\mclosure{u_t^2 + a^2 u_x^2}}{t=\tau} \diff \leq M(t)
 \mclosure{
-	\int_0^l \mclosure{\psi^2 + a^2 \phi_x^2} \diff x + \alpha a^2 \phi(0)
-	+ \beta a^2 \phi(l) + \iint_{Q_\tau} f^2 \diff x \diff t
+    \int_0^l \mclosure{\psi^2 + a^2 \phi_x^2} \diff x + \alpha a^2 \phi(0)
+    + \beta a^2 \phi(l) + \iint_{Q_\tau} f^2 \diff x \diff t
 } \\
 \iint_{Q_\tau} \mclosure{u_t^2 + a^2 u_x^2} \diff x \diff t \leq M(t)
 \mclosure{
-	\int_0^l \mclosure{\psi^2 + a^2 \phi_x^2} \diff x + \alpha a^2 \phi(0)
-	+ \beta a^2 \phi(l) + \iint_{Q_\tau} f^2 \diff x \diff t
+    \int_0^l \mclosure{\psi^2 + a^2 \phi_x^2} \diff x + \alpha a^2 \phi(0)
+    + \beta a^2 \phi(l) + \iint_{Q_\tau} f^2 \diff x \diff t
 } \\
 \end{aligned} \]
 \qed
+\end{solution}
+
+
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
 \endinput
