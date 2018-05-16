@@ -6,7 +6,7 @@
 一根长为 $l$ 的两端固定的弦, 如在中点把弦线提起, 使中点离开平衡位置的距离为 $a$,
 然后把弦线轻轻放下, 使弦作微小横振动. 试列出弦振动所满足的定解问题.
 
-\solution
+\begin{solution}
 \[
 \frac{\partial^2 u}{\partial t^2} - a^2 \frac{\partial^2 u}{\partial x^2} = 0,
 x \in (0, 1), t > 0
@@ -30,6 +30,8 @@ u(x, 0) &= \begin{cases}
 u_t(x, 0) &= 0
 \end{aligned} \]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -38,7 +40,8 @@ u_t(x, 0) &= 0
 设长度为 $l$ 的均匀弹性杆的线密度为 $\rho$, 杨氏模量为 $E$, 试列出杆的微小纵振动
 方程.
 
-\solution 微元 $(x, x + \Delta x)$ 的两端有伸长量 $u_t(x, t)$,
+\begin{solution}
+微元 $(x, x + \Delta x)$ 的两端有伸长量 $u_t(x, t)$,
 $u_t(x + \Delta x, t)$. 不妨设杆的横截面为 $S = S(x)$, 则有
 \[ \begin{aligned}
 x\text{处所受拉力:} & F_x = E(x) \cdot u_t(x, t) \cdot S(x) \\
@@ -83,6 +86,8 @@ a = \frac{\partial^2 u}{\partial t^2}(\bar x, t) = \frac{\sum F}{m},
 \frac{\partial}{\partial x}\left( E(x) \cdot u_x(x, t) \right).
 \]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -96,7 +101,8 @@ a = \frac{\partial^2 u}{\partial t^2}(\bar x, t) = \frac{\sum F}{m},
 \]
 其中 $h$ 是圆锥的高, $\rho$, $E$ 分别是它的密度与杨氏模量, 且 $\rho$, $E$ 为常数.
 
-\solution 由上一题可知:
+\begin{solution}
+由上一题可知:
 \[
 \frac{\partial}{\partial t}\left( \rho(x)S(x) \cdot u_t(x, t) \right) =
 \frac{\partial}{\partial x}\left( E(x) S(x) \cdot u_x(x, t)\right)
@@ -119,6 +125,8 @@ E\frac{\partial}{\partial x}\left[
 \right]
 \]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -129,7 +137,8 @@ E\frac{\partial}{\partial x}\left[
 $a^2 = \frac{k}{cp} = 6 \times 10^{-7} \text{m}^2/\text{s}$, 试列出地球冷却这个
 热传导过程所满足的定解问题.
 
-\solution 建立球坐标系 $(r, \theta, \phi)$:
+\begin{solution}
+建立球坐标系 $(r, \theta, \phi)$:
 \[ \left\{ \begin{aligned}
 r^2 &= x^2 + y^2 + z^2 \\
 \theta &= \arctan \frac{y}{x} \\
@@ -158,6 +167,8 @@ r^2 &= x^2 + y^2 + z^2 \\
 &u|_{\partial \Omega} = 0
 \end{aligned} \right. \]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -169,7 +180,8 @@ r^2 &= x^2 + y^2 + z^2 \\
 送带加煤, 试列出在煤的传输过程中, 煤的质量分布所满足的微分方程和定解条件
 ({\bf 提示:} 煤的传输适合质量守恒定律).
 
-\solution 设 $u = u(x, t)$ 表示其质量分布:
+\begin{solution}
+设 $u = u(x, t)$ 表示其质量分布:
 \[
 \frac{\partial u}{\partial t} + a\frac{\partial u}{\partial x} = 0, x > 0, t > 0
 \]
@@ -182,6 +194,8 @@ r^2 &= x^2 + y^2 + z^2 \\
 &u(0, t) = A(1+\sin t)
 \end{aligned} \right. \]
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -190,7 +204,8 @@ r^2 &= x^2 + y^2 + z^2 \\
 写出连接平面上两点 A, B 的短程线所满足的变分问题. 若 A 的坐标为 $(0, 0)$, B 的坐
 标为 $(3, 5)$, 试求出该变分问题的解.
 
-\solution 设 $AB$ 的方程为 $y = f(x)$, $x \in [a, b]$, 则 $AB$ 的距离为
+\begin{solution}
+设 $AB$ 的方程为 $y = f(x)$, $x \in [a, b]$, 则 $AB$ 的距离为
 \[
 |\bar{AB}| = \diff\ (f)|_A^B = \int_{x_A}^{x_B} \sqrt{1 + f'^2(x)} \diff x
 \]
@@ -231,6 +246,8 @@ J'(0) &= \int_b^a
 其中 $C$ 为常数. 此时有 $f_x = \tilde c$, 即最优解 $f^*$ 满足
 $f^* = \tilde c x + b$ 的形式, 代入 $A(0, 0)$, $B(3, 5)$, 得 $f^* = (5 / 3) x$.
 \qed
+\end{solution}
+
 
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -264,7 +281,8 @@ J(u)= \min_{v \in M} J(v).
 (1) 证明问题 I 与问题 II 等价.
 (2) 当 $u \in C^2 \cap C^1(\bar \Omega)$ 时, 证明问题 I, II, III 等价.
 
-\solproof (1): (I) $\Rightarrow$ (II) (充分性):
+\begin{solproof}
+(1): (I) $\Rightarrow$ (II) (充分性):
 设 $u$ 为最小值点, $\forall v \in M$, $\forall \epsilon \in \mreal$,
 $\phi(\epsilon) = J(u + \epsilon v)$, $\phi'(0) = 0$, 即
 
@@ -316,8 +334,11 @@ J(v) &= \frac12 \int_\Omega \left( |\nabla u|^2 + u^2 \right) \diff x
 \implies & J(v) \geq J(u)
 \end{aligned} \]
 即证.
+\qed
+\end{solproof}
 
-\solproof (2): (II) $\Rightarrow$ (III) (充分性):
+\begin{solproof}
+(2): (II) $\Rightarrow$ (III) (充分性):
 对 $\forall v \in C_0^\infty(\Omega) \subset M$, 若 (II) 满足, 则有:
 \[ \begin{aligned}
 & \int_\Omega\left[ \nabla u\cdot\nabla v + uv - fv \right] \diff x = 0 \\
@@ -350,4 +371,10 @@ J(v) &= \frac12 \int_\Omega \left( |\nabla u|^2 + u^2 \right) \diff x
 \]
 累加合并即得其解.
 \qed
+\end{solproof}
+
+
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
 \endinput
