@@ -52,3 +52,4 @@ Temporary Items
 *.aux
 *.fdb_latexmk
 *.fls
+*.thm
