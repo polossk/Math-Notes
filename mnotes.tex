@@ -1,6 +1,6 @@
-\documentclass[12pt,a4paper,openany,oneside]{book}
+\documentclass[12pt,b5paper]{book}
 %------------------------------------------------------------------------------%
-\newcommand\artversion{0.1.0}
+\newcommand\artversion{v0.1.0}
 \newcommand\shorttitle{Math Notes}
 \newcommand\strtitle{Math Notes}
 \newcommand\strauthor{polossk}
@@ -10,8 +10,16 @@
 %------------------------------------------------------------------------------%
 \input{book-setting}
 %------------------------------------------------------------------------------%
+\newtheorem*{solution}{解}
+\newtheorem*{solproof}{证明}
+\newtheorem*{defination}{定义}
+\renewcommand{\qed}{\ifmmode\qed\else\hfill\proofSymbol\fi}
+%------------------------------------------------------------------------------%
 \begin{document}
 %------------------------------------------------------------------------------%
+\pagenumbering{Roman}
+\frontmatter
+\thispagestyle{fancy}
 \begin{titlepage}
     \vspace*{4em}
     \begin{center}
@@ -22,19 +30,18 @@
         {\large \today} \\
     \end{center}
 \end{titlepage}
-\thispagestyle{fancy}
-\clearpage
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{\fHei 目录}
 \tableofcontents
 \clearpage
-
 %------------------------------------------------------------------------------%
 
 %---------------------------------------
 % 文章正文
 %---------------------------------------
-
+\mainmatter
+\input{chapters/chapter-01-Equations-of-Mathematical-Physics/main.tex}
 \input{chapters/chapter-99-misc/main.tex}
 
 %---------------------------------------

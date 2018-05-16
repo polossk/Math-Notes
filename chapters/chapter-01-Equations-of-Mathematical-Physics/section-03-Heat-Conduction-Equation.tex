@@ -1,0 +1,323 @@
+\section{热传导方程}
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{Ex 1.}
+按定义求函数的 Fourier 变式
+\[
+f(x) = \begin{cases}0 & (\abs x > a) \\ \abs x & (\abs x \leq a) \end{cases}
+\]
+
+\solution
+\[ \begin{aligned}
+\hat f(\lambda) &= \frac{1}{\sqrt{2\pi}} \int_{-a}^a
+ \abs{x} \me^{-\mi \lambda x} \diff x \\
+&= \frac{1}{\sqrt{2\pi}} \mclosure{
+	\int_0^a x \me^{-\mi \lambda x} \diff x
+	-\int_{-a}^a x \me^{-\mi \lambda x} \diff x
+} \\
+&= \frac{2}{\sqrt{2\pi}} \mclosure{
+	\frac{1}{\lambda^2} \cos (\lambda a) - \frac{1}{\lambda^2}
+	+\frac{a}{\lambda} \sin (\lambda a)
+} \\
+\implies \hat f(\lambda) &= \sqrt{\frac{2}{\pi}} \mclosure{
+	\frac{a}{\lambda} \sin (\lambda a) + \frac{1}{\lambda^2} \cos (\lambda a)
+	- \frac{1}{\lambda^2}
+}
+\end{aligned} \]
+\qed
+
+
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{Ex 2.}
+利用 Fourier 变换的性质函数的 Fourier 变式
+\[
+f(x)=\begin{cases}\me^{\mi \lambda_0 x}&(\abs x< L)\\0&(\abs x\geq L)\end{cases}
+\]
+
+\solution
+\[ \begin{aligned}
+\hat f(\lambda) &= \frac{1}{\sqrt{2\pi}} \int_{-L}^L
+ \me^{\mi (\lambda_0 - \lambda) x} \diff x \\
+&= \frac{1}{\sqrt{2\pi}} \frac{1}{\mi (\lambda_0 - \lambda)}  \mclosure{
+	\exp \mclosurebrace{\mi (\lambda_0 - \lambda) L}
+	-\exp \mclosurebrace{-\mi (\lambda_0 - \lambda) L}
+} \\
+&= \sqrt{\frac{2}{\pi}} \frac{\sin(\lambda_0 - \lambda) L}{\lambda_0 - \lambda}
+\end{aligned} \]
+\qed
+
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{Ex 3.}
+求函数的 Fourier 逆变换
+\[ f(\lambda) = \me^{-a^2 \lambda^2 t},\ (t > 0 \text{为参数}) \]
+
+\solution
+\[ \begin{aligned}
+f(x) &= \lim_{N \to \infty} \frac{1}{\sqrt{2\pi}} \cdot
+ \int_{-N}^{N} \me^{\mi \lambda x - a^2 \lambda^2 t} \diff \lambda \\
+&= \lim_{N \to \infty} \frac{1}{\sqrt{2\pi}} \mclosuresquare{
+	\int_{-N}^{N} \me^{\mi \lambda x} \diff \lambda
+	+ \int_{-N}^{N} \me^{-a^2 \lambda^2 t} \diff \lambda
+} \\
+&= \frac{1}{a\sqrt{2t}} \me^{-\frac{x^2}{4 a^2 t}}
+\end{aligned} \]
+\qed
+
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{Ex 4.}
+应用 Fourier 变换求解以下定解问题 \\
+(1) $\begin{dcases}
+\fracpartial{u}{t} - a^2 \fracpartial{^2u}{x^u} - b \fracpartial{u}{x} - cu
+=f(x, t), & -\infty < x < \infty, t > 0 \\
+\mfwhen{u}{t=0} = \phi(x), & -\infty < x < \infty
+\end{dcases}$\\
+(2) $\begin{dcases}
+\fracpartial{^2u}{x^2}+\fracpartial{^2u}{y^2} = 0, &-\infty<x<\infty, y > 0 \\
+\mfwhen{u}{y=0} = \phi(x), & -\infty < x < \infty, \phi(x) \text{连续有界}
+\end{dcases}$\\
+
+\solution
+(1): 对 $u$ 关于 $x$ 作 Fourier 变换 $\hat u = \hat u(x, t) = (u(x, t))^{\hat{}}$
+\[\implies \mequlist{
+&\fracdiff{\hat u}{t} +a^2\lambda^2\hat u -\mi b\lambda\hat u -c\hat u
+ =\hat f(\lambda, t) \\
+&\mfwhen{\hat u}{t=0} = \hat\phi(\lambda)
+}
+\]
+解此 ODE 得到
+\[
+\hat u = \me^{(-a^2\lambda^2 + \mi b \lambda + c)t} \hat\phi(\lambda)
++ \int_0^t \me^{(-a^2\lambda^2 + \mi b \lambda + c)(t - \tau)}
+ \hat f(\lambda, \tau) \diff \tau
+\]
+\[ \begin{aligned}
+u &= (\hat u)^{\check{}} \\
+&= \me^{\mclosure{c-\frac{b}{4a^2}}t} \cdot \frac{1}{a\sqrt{2t}}
+\int_{-\infty}^{+\infty} \me^{\frac{(x - \xi)^2}{4a^2t}} \cdot
+\me^{-\frac{b}{2a^2}(x-\xi)} \cdot \phi(\xi) \diff \xi \\
+&+ \int_0^{t} \frac{1}{a\sqrt{t-\tau}} \me^{\mclosure{c-\frac{b}{4a^2}}(t-\tau)}
+\int_{-\infty}^{+\infty} \me^{\frac{(x - \xi)^2}{4a^2(t-\tau)}} \cdot
+\me^{-\frac{b}{2a^2}(x-\xi)} \cdot f(\xi, \tau) \diff \xi \diff \tau
+\end{aligned} \]
+即得其解
+
+\noindent (2): 对 $u$ 关于 $x$ 作 Fourier 变换
+$\hat u = \hat u(x, t) = (u(x, t))^{\hat{}}$ 则原方程可以化为
+\[ \mequlist{
+& (\mi\lambda)^2 \hat u(\lambda, y)	+ \fracpartial{^2\hat u}{y^2} = 0 \\
+& \mfwhen{\hat u}{y=0} = \hat \phi(\lambda)
+} \implies \fracpartial{^2\hat u}{y^2} = \lambda^2\hat u(\lambda, y) = 0\]
+解这个 ODE 得到 $\hat u(\lambda, y) = C \cdot \me^{-\abs{\lambda} y}$, 考察初值
+条件, $\mfwhen{\hat u}{y=0} = \hat\phi(\lambda)$,
+$\hat u = \hat\phi(\lambda) \cdot \me^{-\abs{\lambda}y}$. 对其进行逆 Fourier 变
+换, 得
+\[
+u(x, y) = \sqrt{\frac{2}{\pi}} \int_{-\infty}^{+\infty} \frac{y}{y^2+(x-\xi)^2}
+\phi(\xi) \diff \xi
+\]
+
+\qed
+
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{Ex 5.}
+证明在 $\mathcal D'(-\infty, \infty)$ 意义下 \\
+(1) $\phi(x)\delta(x) = \phi(0)\delta(x)$; \\
+(2) $\phi(x)\delta'(x) = -\phi'(0)\delta(x) + \phi(0)\delta'(x)$; \\
+其中 $\phi \in \mscon{^\infty(-\infty, \infty)}$
+
+\solution
+引入一试验函数 $\xi(x) \in \mathcal D(\mreal)$.
+
+\noindent (1): 对 $\phi(x) \cdot \delta(x)$, 考察 $\phi(x) \cdot \delta(x)$ 的对
+偶积
+\[ \begin{aligned}
+<\phi(x) \cdot \delta(x), \xi(x)> &= \int_{-\infty}^{+\infty} 
+	\phi(x) \cdot \delta(x) \cdot \xi(x) \diff x \\
+&= <\delta(x), \phi(x) \cdot \xi(x)> = \phi(0) \cdot \xi(0)
+\end{aligned} \]
+又 $\xi(0) = <\delta(x), \xi(x)>$, 故有
+$\phi(0)\xi(0) = \phi(0) \cdot <\delta(x), \xi(x)>$
+\[ \begin{aligned}
+<\phi(x) \cdot \delta(x), \xi(x)> &= \phi(0) \cdot <\delta(x), \xi(x)> \\
+&= \phi(0) \int_{-\infty}^{+\infty}\delta(x)\xi(x)\diff x \\
+&= <\phi(0) \cdot \delta(x), \xi(x)>
+\end{aligned} \]
+即证 $\phi(x)\delta(x) = \phi(0)\delta(x)$
+
+\noindent (2): 对 $\phi(x) \cdot \delta'(x)$, 考察其对偶积
+\[ \begin{aligned}
+<\phi(x) \cdot \delta'(x), \xi(x)> &= \int_{-\infty}^{+\infty} 
+	\phi(x) \cdot \delta'(x) \cdot \xi(x) \diff x \\
+&= <\delta'(x), \phi(x)\cdot\xi(x)> = -<\delta(x), (\phi(x)\cdot\xi(x))'> \\
+&= -<\delta(x), \phi(x)\cdot\xi'(x) + \phi'(x)\cdot\xi(x)> \\
+&= -<\delta(x), \phi(x)\cdot\xi'(x)> - <\delta(x), \phi'(x)\cdot\xi(x)> \\
+&= -\phi(0)\cdot\xi'(0) - \phi'(0)\cdot\xi(0) \\
+&= -\phi(0)<\delta(x), \xi'(x)> - \phi'(0)<\delta(x), \xi(x)> \\
+&= \phi(0)<\delta(x)', \xi(x)> - \phi'(0)<\delta(x), \xi(x)> \\
+&= \int_{-\infty}^{+\infty} \phi(0)\cdot\delta'(x)\cdot\xi(x) \diff x
+- \int_{-\infty}^{+\infty} \phi'(0)\cdot\delta(x)\cdot\xi(x) \diff x \\
+&= <\phi(0)\cdot\delta'(0) - \phi'(0)\cdot\delta(0), \xi(x)>
+\end{aligned} \]
+即证 $\phi(x)\delta'(x) = -\phi'(0)\delta(x) + \phi(0)\delta'(x)$
+\qed
+
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{Ex 7.}
+计算广义导数
+\[ f(x) = \begin{cases} \sin x, & x \geq 0 \\ 0, & x < 0 \end{cases} \]
+
+\solution
+对 $\forall \phi \in \mathcal (\mreal)$ 有
+\[ \begin{aligned}
+<f', \phi> &= -<f, \phi'> = -\int_{-\infty}^{+\infty} f\cdot\phi'\diff x \\
+&= -\int_{0}^{+\infty} \sin x\cdot\phi'(x)\diff x \\
+&= -\mclosuresquare{\left.\sin x\phi(x)\right|_0^{+\infty}
++ \int_{0}^{+\infty} \cos x\phi(x) \diff x} \\
+&= +\int_0^{+\infty} \cos x\phi(x) \diff x \\
+\end{aligned} \]
+取特殊函数 $H(x) = \begin{dcases}1,&x\geq0\\0,&x<0\end{dcases}$, 有
+\[ <f',\phi> = <H(x)\cdot \cos x, \phi> \]
+故有 $f' = H(x)\cdot\cos(x)$
+\qed
+
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{Ex 8.}
+利用函数
+\[ \Phi(z) = \frac{2}{\sqrt\pi} \int_0^z \me^{-\xi^2} \diff \xi \]
+求解半无界问题
+\[ \begin{dcases}
+u_t - a^2 u_{xx} = 0, & x > 0, t > 0 \\
+u(x, 0) = 0, & x \geq 0 \\
+-\fracpartial{u}{x}(0, t) = q, & t > 0, q \text{为常数}
+\end{dcases} \]
+
+\solution
+令 $z = \frac{x}{2a\sqrt{t}}$, 则有
+\[ \begin{aligned}
+\fracpartial{\Phi}{t} - a^2 \fracpartial{^2\Phi}{x^2}
+&= \fracpartial{\Phi}{z} \fracpartial{z}{t}
+ - a^2 \fracpartials{x}\mclosure{\fracpartial{\Phi}{x}} \\
+&= \fracpartial{\Phi}{z} \fracpartial{z}{t}
+ - a^2 \fracpartials{x}\mclosure{\fracpartial{\Phi}{z}\fracpartial{z}{x}} \\
+&= \Phi'(z) \mclosure{\frac{-x}{4at\sqrt{t}}}
+ - a^2 \frac{-x}{2a\sqrt{t}} \mclosuresquare{
+  \Phi'(z) \mclosure{-2 \cdot \frac{x}{2a\sqrt{t}}} \cdot \frac{1}{2a\sqrt{t}}
+ } \\
+&= \Phi'(z) \mclosure{\frac{-x}{4at\sqrt{t}}}
+ - \Phi'(z) \mclosure{\frac{-x}{4at\sqrt{t}}} = 0\\
+\implies \fracpartial{\Phi}{t} - a^2 \fracpartial{^2\Phi}{x^2} &= 0
+\end{aligned} \]
+又 $\dfracpartial{\Phi}{x} = \dfracpartial{\Phi}{z} \cdot \dfracpartial{z}{x}
+= \Phi'(z) \cdot \dfrac{1}{2a\sqrt{t}}$,
+$-\mfwhen{\dfracpartial{\Phi}{x}}{(0, t)}=-\Phi(0)\cdot \dfrac{1}{2a\sqrt{t}}$,
+令 $v = \Phi_1 - qx$, 满足
+\[ \begin{dcases}
+v_t - a^2 v_{xx} = 0 \\
+v(x, 0) = qx = \phi(x) \\
+v_x(0, t) = 0
+\end{dcases} \]
+同时对 $\phi(x)$ 作偶延拓
+$\bar{\phi}(x) = \begin{dcases}qx,&x\geq0\\-qx,&x<0\end{dcases}$, 故有
+
+\[ \begin{aligned}
+\bar{v}(x, t) &= \int_0^\infty \mclosuresquare{
+	\Gamma(x-\xi, t) + \Gamma(x+\xi, t)
+} \cdot q \cdot \xi \diff \xi \\
+&= \int_0^\infty \mclosuresquare{
+	\frac{1}{2a\sqrt{\pi t}} \me^{-\frac{(x-\xi)^2}{4a^2t}}
+	+\frac{1}{2a\sqrt{\pi t}} \me^{-\frac{(x+\xi)^2}{4a^2t}}
+} \cdot q \cdot \xi \diff \xi \\
+\text{令\ }y &= \frac{x+\xi}{2a\sqrt{t}} \\
+\implies \bar{v}(x, t) &= \frac{1}{2a\sqrt{\pi t}} 
+	\int_{\frac{x}{2a\sqrt{t}}}^\infty \me^{-y^2}\cdot q \cdot
+	\mclosure{ x - 2a\sqrt{t} y } \diff \mclosure{ x - 2a\sqrt{t} y } \\
+	&\ +\frac{1}{2a\sqrt{\pi t}}
+	\int_{\frac{x}{2a\sqrt{t}}}^\infty \me^{-y^2}\cdot q \cdot
+	\mclosure{ 2a\sqrt{t} y - x } \diff \mclosure{ 2a\sqrt{t} y - x } \\
+&= -\frac{qx}{\sqrt{\pi}} \int_{\frac{x}{2a\sqrt{t}}}^\infty \me^{-y^2} \diff y
++ 2aq\sqrt{\frac{t}{\pi}} \mclosuresquare{
+	\int_{\frac{x}{2a\sqrt{t}}}^{-\frac{x}{2a\sqrt{t}}} y\me^{-y^2}\diff y
+	+\int_{-\frac{x}{2a\sqrt{t}}}^\infty y\me^{-y^2}\diff y
+} \\
+&\ +2aq\sqrt{\frac{t}{\pi}}\int_{\frac{x}{2a\sqrt{t}}}^\infty y\me^{-y^2}\diff y
+-\frac{qx}{\sqrt{\pi}} \int_{\frac{x}{2a\sqrt{t}}}^\infty \me^{-y^2} \diff y \\
+&= -\frac{qx}{2}\mclosure{\Phi(-\infty) - \Phi\mclosure{\frac{x}{2a\sqrt{t}}}}
++4aq\sqrt{\frac{t}{\pi}} \int_{\frac{x}{2a\sqrt{t}}}^\infty y\me^{-y^2} \diff y
+-\frac{qx}{2}\mclosure{\Phi(\infty) - \Phi\mclosure{\frac{x}{2a\sqrt{t}}}}\\
+\implies \bar{v}(x, t) &= -\frac{qx}{2}\mclosuresquare{
+	\Phi(\infty) + \Phi(-\infty) -2\Phi\mclosure{\frac{x}{2a\sqrt{t}}}
+} + 2aq\sqrt{\frac{t}{\pi}} \me^{-\frac{x^2}{4a^2t}} \\
+\implies u(x, t) &= \bar{v}(x, t) - qx
+\end{aligned} \]
+\qed
+
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{Ex 9.}
+用分离变量法求解下列混合问题:
+\[ \begin{dcases}
+u_t = a^2 u_{xx} + x(l-x), & 0 < x < l, t > 0 \\
+\mfwhen{u}{t=0} = \sin \dfrac{\pi}{l} x, & 0 \leq x \leq l \\
+\mfwhen{u}{x=0} = 0, \mfwhen{\dfracpartial{u}{x}}{x=l} = 1, & t > 0
+\end{dcases} \]
+
+\solution
+令 $v = u - x$, 方程化为
+\[ \begin{equlist}
+&v_t - a^2 v_{xx} = x(l - x) = f(x) \\
+&\mfwhen{v}{t=0} = \sin \frac{n\pi}{l} x - x = \phi(x) \\
+&\mfwhen{v}{x=0} = 0, \mfwhen{\fracpartial{v}{x}}{x=l}
+= \mfwhen{\fracpartial{u}{x}}{x=l} - 1 = 0
+\end{equlist} \]
+分离变量, 令 $v(x, t) = X(x) \cdot T(t)$
+\[
+\frac{X''}{X} = \frac{T'}{a^2T} = -\lambda \implies
+\begin{cases} X''(x) + \lambda X(x) = 0 \\ X(0) = X'(l) = 0
+\end{cases}
+\]
+则有 $X_n(x) = \sin \mclosure{\dfrac{2n+1}{2l}\pi x}$, 因此有
+\[ \begin{aligned}
+v(x, t)&=\sum_{n=1}^{\infty}T_n(t)\cdot\sin\mclosure{\dfrac{2n+1}{2l}\pi x}\\
+f(x, t)&=\sum_{n=1}^{\infty}f_n(t)\cdot\sin\mclosure{\dfrac{2n+1}{2l}\pi x}\\
+\phi(x)&=\sum_{n=1}^{\infty}\phi_n(t)\cdot\sin\mclosure{\dfrac{2n+1}{2l}\pi x}\\
+\end{aligned} \]
+由基 $\mclosurebrace{\sin \mclosure{\dfrac{2n+1}{2l}\pi x}}_{n=1}^\infty$
+在 $[0, 1]$ 上正交
+\[ w_n(x) = \sin\mclosure{\dfrac{2n+1}{2l}\pi x} \]
+\[ \mequlist{
+f_n(t)&=\frac 2l\int_0^l x(l-x)\cdot w_n(x) \diff x\\
+\phi_n(t)&=\frac 2l\int_0^l \mclosure{\sin\frac{\pi}{l}x-x}\cdot w_n(x)\diff x
+} \]
+代入 $v(x, t)$ 所适定的方程组中
+\[ \implies \mequlist{
+&\sum_{n=1}^\infty w_n(x)\cdot T_n'(t) + \mclosure{
+	\frac{2n+1}{2l}\pi a
+}^2 \sum_{n=1}^\infty w_n(x)\cdot T_n(t)=\sum_{n=1}^\infty w_n(x)\cdot f_n(t) \\
+&T_n(0) = \phi_n
+} \]
+化简, 并由正交性可知
+\[ \implies \mequlist{
+&T_n'(t) + \mclosure{\frac{2n+1}{2l}\pi a}^2 T_n(t) = f_n(t) \\
+&T_n(0) = \phi_n
+} \]
+令 $\theta_n = \dfrac{2n+1}{2l}\pi$, 有
+\[T_n = \phi_n \me^{-\theta_n^2a^2t}
++\int_0^t f_n(\tau) \me^{-\theta_n^2a^2(t-\tau)} \diff \tau
+\]
+故可知 $v(x, t) = \sum_{n=1}^\infty T_n(t) \cdot w_n(x)$, $u(x, t) = x + v(x, t)$
+\qed
+\endinput
