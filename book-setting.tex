@@ -12,13 +12,14 @@
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{clrscode}
 \usepackage{gensymb}
-\usepackage{varwidth}
 %------------------------------------------------------------------------------%
+
 
 %--------------------------------设置标题与目录--------------------------------%
 \usepackage[sf]{titlesec}
 \usepackage{titletoc}
 %------------------------------------------------------------------------------%
+
 
 %--------------------------------添加书签超链接--------------------------------%
 \usepackage[unicode=true,colorlinks=false,pdfborder={0 0 0}]{hyperref}
@@ -66,7 +67,6 @@
 
 %---------------------------------设置中文字体---------------------------------%
 \usepackage{fontspec}
-% \usepackage[SlantFont,BoldFont,CJKchecksingle,CJKnumber]{xeCJK}
 \usepackage[SlantFont,BoldFont,CJKchecksingle]{xeCJK}
 \usepackage{CJKnumb}
 % 使用 Adobe 字体
@@ -157,7 +157,6 @@
 \renewcommand{\contentsname}{目~录}
 \newcommand{\keywords}[1]{\\ \\ \textbf{关~键~词}：#1}
 
-
 \titleformat{\chapter}[hang]{\normalfont\sSanhao\filcenter\fHei\bf}%
     {\sSanhao{\chaptertitlename}}{20pt}{\sSanhao}
 \titleformat{\section}[hang]{\fHei \bf \sXiaosan}%
@@ -181,6 +180,14 @@
     {\contentsmargin{0pt}\fHei\makebox[0pt][l]{\chapterID{\thecontentslabel}}\hspace{3.8em}}%
     {\contentsmargin{0pt}\fHei}%
     {\titlerule*[.5pc]{.}\contentspage}[\vspace{0em}]
+
+% 删除 chapter 分页
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\chapter}
+  {\if@openright\cleardoublepage\else\clearpage\fi}{\par\relax}
+  {}{}
+\makeatother
 %------------------------------------------------------------------------------%
 
 
