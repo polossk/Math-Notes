@@ -61,7 +61,7 @@ X_{1, 2} = \frac12 (-q \pm \sqrt{q^2 + \frac{4p^3}{27}}) = -\frac{q}{2} \pm \sqr
 \]
 令 $z_\alpha^3 = X_1$, 则有 $z_{\alpha, i} = \omega^i_0 \sqrt[3]{X_1}$, 其中 $\omega$ 表示三次方程 $x^3-1 = 0$ 的三个单位根中的其中一个.
 
-综上可得到三次方程的一般解形式:
+综上可得到三次方程解的一般形式:
 \[ \begin{aligned}
     x_0 &= \frac{b}{3a} + \omega^{0} \sqrt[3]{-\frac{q}{2}+\sqrt{(\frac{q}{2})^2 + (\frac{q}{3})^3}} + \omega^{3} \sqrt[3]{-\frac{q}{2}-\sqrt{(\frac{q}{2})^2 + (\frac{q}{3})^3}} \\
     x_1 &= \frac{b}{3a} + \omega^{1} \sqrt[3]{-\frac{q}{2}+\sqrt{(\frac{q}{2})^2 + (\frac{q}{3})^3}} + \omega^{2} \sqrt[3]{-\frac{q}{2}-\sqrt{(\frac{q}{2})^2 + (\frac{q}{3})^3}} \\
@@ -76,10 +76,12 @@ q &= \frac{27a^2d - 9abc + 2b^2}{27a^3}
 \qed
 \end{solution}
 
-三次方程同样具有韦达定理:
+\begin{lemma}[韦达定理]
+三次方程的根有如下性质:
 \begin{itemize}
 \item $x_1 + x_2 + x_3 = -b/a$
 \item $x_1 x_2 + x_2 x_3 + x_1 x_3 = c/a$
 \item $x_1 x_2 x_3 = -d/a$
 \end{itemize}
+\end{lemma}
 \endinput
