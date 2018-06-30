@@ -1,0 +1,172 @@
+\section{PDE-Net: Learning PDEs from Data}
+\arxiv{1710.09668}
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{网络结构与计算流程}
+每一个 $\delta t-block$ 的计算流程如 \ref{tab:pde-net-dtblock} 所示.
+
+\begin{table}[h]
+\begin{tabular}{cl}
+\toprule
+$\delta t-block$ & $\mmu_i \to \hat \mmu_{i + 1}$ \\
+\midrule
+Average & $\mmu_{avg} = \mmu_i \otimes conv_{avg}$ \\
+Conv & $\mmu_j = (\mmu_i \otimes conv_j) \odot w_j$ \\
+Shortcut & $\hat \mmu_{i + 1} = \mmu_{avg} + \delta t \sum_{j=0}^q \mmu_j$ \\
+\bottomrule
+\end{tabular}
+\caption{$\delta t-block$ 的计算流程}
+\label{tab:pde-net-dtblock}
+\end{table}
+
+\noindent 其中 $q$ 表示所考虑的方程的最高的阶数, $\delta t$ 表示时间尺度的网格尺
+寸, 符号 $\otimes$ 表示循环卷积, $\odot$ 表示矩阵对应项相乘. 则
+$k\delta t-blocks$ 的计算流程如 \ref{tab:pde-net-kdtblocks} 所示.
+
+\begin{table}[h]
+\begin{tabular}{cl}
+\toprule
+$k\delta t-blocks$ & $\mmu_i \to \hat \mmu_{i + k}$ \\
+\midrule
+block 1 & $\hat \mmu_{i + 1} = [\delta t-block]\rhd\mmu_i$ \\
+block 2 & $\hat \mmu_{i + 2} = [\delta t-block]\rhd\hat\mmu_{i + 1}$ \\
+$\vdots$ & $\vdots$ \\
+block k & $\hat \mmu_{i + k} = [\delta t-block]\rhd\hat\mmu_{i+k-1}$ \\
+\bottomrule
+\end{tabular}
+\caption{$k\delta t-blocks$ 的计算流程}
+\label{tab:pde-net-kdtblocks}
+\end{table}
+
+\noindent 损失函数为 $\norm{\mmu_{i + k} - \hat \mmu_{i + k}}_2^2$. 训练时, 选择
+MSE 为优化目标进行训练, 用 LBFGS 进行训练.
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{一维算例}
+对于方程 $\dfracpartial{u}{t} = \nu \dfracpartial{^2u}{x^2}$, 其特解为
+$u = \alpha \sin(\omega x + \phi) \exp(\beta t + \theta)$. 则有
+\[ \begin{aligned}
+u &= \alpha \sin(\omega x + \phi) \exp(\beta t + \theta) \\
+\fracpartial{u}{t} &= \alpha \beta \sin(\omega x + \phi)
+    \exp(\beta t + \theta) \\
+\fracpartial{^2u}{x^2} &= -\alpha \omega^2 \sin(\omega x + \phi)
+    \exp(\beta t + \theta) \\
+\implies \alpha \beta &= \nu \cdot -\alpha \omega^2 \\
+\implies \beta &= -\nu \omega^2 \\
+\end{aligned} \]
+
+考虑如下的初值问题
+\[ \begin{cases}
+\dfracpartial{u}{t} = \nu \dfracpartial{^2u}{x^2} \\
+u(x, 0) = \alpha \sin(\omega x + \phi) \exp(\theta) \\
+u(0, t) = u(1, t) = 0 \\
+(x, t) \in [0, 1] \times [0, 1] \\
+\end{cases} \]
+其中 $\{\alpha, \omega, \phi\}$ 为随机值, 构造训练数据. 
+
+初始化时, $w_j$ 为大小 $[N + 1 \times 1]$ 的矩阵, 其元素的值服从正态分布
+$\mathcal N(0, 2(N+1)^{-1})$. 对于网格大小, 空间尺寸 $\Delta x = 0.01$, 时间尺寸
+$\delta t = 0.002$.
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\paragraph{二维算例}
+对于二维的对流扩散方程
+\[ \begin{aligned}
+\dfracpartial{u}{t} &= a(x, y) \dfracpartial{u}{x} + b(x, y) \dfracpartial{u}{y}
+    + c \dfracpartial{^2u}{x2} + d \dfracpartial{^2u}{y2} \\
+a(x, y) &= \frac{1}{2}x(2\pi - x)\sin x + \frac{1}{2}\cos y + \frac{3}{5} \\
+b(x, y) &= 2\sin x + 2\cos y + \frac{4}{5} \\
+(c, d) &= (0.2, 0.3)
+\end{aligned} \]
+其初值 $u_0$ 满足
+$u_0 = \sum_{k, l} \lambda_{k, l}\cos(kx+ly) + \gamma_{k, l}\sin(kx+ly)$, 其中
+$k, l\in\{(k, l)\colon|k|, |l| \leq N = 4\}$, $\lambda_{k, l}$, $\gamma_{k, l}$
+服从正态分布 $\mathcal N(0, 0.02)$. 考虑周期边界条件, 即
+\[ \begin{cases}
+\dfracpartial{u}{t} = a(x, y) \dfracpartial{u}{x} + b(x, y) \dfracpartial{u}{y}
+    + c \dfracpartial{^2u}{x2} + d \dfracpartial{^2u}{y2} \\
+u(x, y, 0) = u_0(x, y) \\
+u(x, 0, t) = u(x, 2\pi, t),u(0, y, t) = u(2\pi, y, t) \\
+(x, y, t) \in [0, 2\pi] \times [0, 2\pi] \times [0, 1]
+\end{cases} \]
+
+利用谱方法对该方程进行数值求解, 即令
+$u^n = \sum_{i, j}^N u_{ij}^n \cdot \phi_i(x) \cdot \psi_j(y)$,
+$i, j = 0, 1, \cdots, N - 1$, 其中 $\phi_i(x)$ 和 $\psi_j(y)$ 为谱函数, 具体而言
+\[ \begin{aligned}
+\phi_i(x) &= h_i(x) = \frac{1}{N} \sin \left[N\frac{x - x_i}{2}\right]
+    \cot \left[\frac{x - x_i}{2}\right] \\
+\psi_i(y) &= h_j(y) = \frac{1}{N} \sin \left[N\frac{y - y_j}{2}\right]
+    \cot \left[\frac{y - x_j}{2}\right] \\
+\partial_x^{(m)} u^n &= \sum_{i, j}^N u_{ij}^n \phi_i^{(m)}(x) \psi_j(y) \\
+\partial_y^{(m)} u^n &= \sum_{i, j}^N u_{ij}^n \phi_i(x) \psi_j^{(m)}(y)
+\end{aligned} \]
+
+则原方程可以写成如下形式
+\[ \begin{aligned}
+u_t &= a(x, y) u_x^n + b(x, y) u_y^n + c u_{xx}^n + d u_{yy}^n \\
+    &= a(x, y) \sum_{i, j}^N u_{ij}^n \phi_i'(x) \psi_j(y) \\
+        &\quad+b(x, y)\sum_{i, j}^N u_{ij}^n \phi_i(x) \psi_j'(y) \\
+        &\quad+c\sum_{i, j}^N u_{ij}^n \phi_i''(x) \psi_j(y)
+        + d \sum_{i, j}^N u_{ij}^n \phi_i(x) \psi_j''(y) \\
+    &= \sum_{i, j}^N u_{ij}^n \bigl[ a(x, y) \phi_i'(x) \psi_j(y)
+        + b(x, y) \phi_i(x) \psi_j'(y) \\
+        &\qquad+c \phi_i''(x) \psi_j(y) + d \phi_i(x) \psi_j''(y) \bigr] \\
+    &= \mmu^n \odot (\mma + \mmb + \mmc + \mmd)
+\end{aligned} \]
+其中 $\mmu^n = (u_{ij}^n)_{N \times N}$,
+$\mma = (a(x_i, y_j) \* \phi_i'(x) \* \psi_j(y))_{N \times N}$,
+$\mmb = (b(x_i, y_j) \* \phi_i(x) \* \psi_j'(y))_{N \times N}$,
+$\mmc = (c \* \phi_i''(x) \* \psi_j(y))_{N \times N}$,
+$\mmd = (d \* \phi_i(x) \* \psi_j''(y))_{N \times N}$,
+符号 $\odot$ 表示矩阵对应项相乘.
+
+对谱函数 $h(x)$ 计算其导函数 $h'(x)$ 与 $h''(x)$, 有
+\[ \begin{aligned}
+\mmd_1 &= \bigl( h_j'(x_i) \bigr) = \begin{cases}
+    \frac{(-1)^{i+j}}{2}\cot\left[\frac{i-j}{N}\pi\right], &i \ne j \\
+    0, &i = j \end{cases} \\
+\mmd_2 &= \bigl( h_j''(x_i) \bigr) = \begin{cases}
+    \frac{(-1)^{i+j}}{2}\sin^{-2}\left[\frac{i-j}{N}\pi\right], &i \ne j \\
+    -\frac{N^2}{12} - \frac{1}{6}, &i = j \end{cases}
+\end{aligned} \]
+
+将该结果代入之前的公式中, 整理可得
+对谱函数 $h(x)$ 计算其导函数 $h'(x)$ 与 $h''(x)$, 有
+\[ \begin{aligned}
+a(x, y)\mmu_x &= a_1(x)\mmu_x + a_2(y)\mmu_x + a_3\mmu_x \\
+    &= a_1(x)\mmd_1\mmu + \mmd_1\mmu a_2(y) + a_3\mmd_1\mmu \\
+    &= \mma_1\mmd_1\mmu + \mmd_1\mmu\mma_2 + \mma_3\mmd_1\mmu \\
+b(x, y)\mmu_y &= b_1(x)\mmu_y + b_2(y)\mmu_y + b_3\mmu_y \\
+    &= b_1(x)\mmu\mmdt_1 + \mmu\mmdt_1 b_2(y) + b_3\mmu\mmdt_1\\
+    &= \mmb_1\mmu\mmdt_1 + \mmu\mmdt_1\mmb_2 + \mmb_3\mmu\mmdt_1 \\
+c\mmu_{xx} &= c\mmd_2\mmu \\
+d\mmu_{yy} &= d\mmu\mmdt_2 \\
+\mmf(\mmu) &= \mma_1\mmd_1\mmu + \mmd_1\mmu\mma_2 + \mma_3\mmd_1\mmu \\
+    &\quad+ \mmb_1\mmu\mmdt_1 + \mmu\mmdt_1\mmb_2 + \mmb_3\mmu\mmdt_1 \\
+    &\quad+ c\mmd_2\mmu + d\mmu\mmdt_2
+\end{aligned} \]
+
+在时间尺度上使用 Runge-Kutta 方法, 初值由上文中提到的 $u_0$ 计算
+\[ \begin{aligned}
+u_0 &= \sum_{k, l} \lambda_{k, l}\cos(kx+ly) + \gamma_{k, l}\sin(kx+ly) \\
+\mmu_0 &= \bigl(u_{ij}\bigr)_{N \times N}
+    = \bigl(u_0(x_i, y_j)\bigr)_{N \times N} \\
+\mmk_1 &= \mmf(\mmu_0) \\
+\mmk_2 &= \mmf(\mmu_0 + \frac{1}{2} \cdot\delta t \cdot \mmk_1) \\
+\mmk_3 &= \mmf(\mmu_0 + \frac{1}{2} \cdot\delta t \cdot \mmk_2) \\
+\mmk_4 &= \mmf(\mmu_0 + \delta t \cdot \mmk_3) \\
+\mmu_1 &= \mmu_0 + \frac{1}{6}\delta t \cdot \bigl[
+    \mmk_1 + \mmk_2 + \mmk_3 + \mmk_4 \bigr] \\
+\end{aligned} \]
+
+初始化时, $w_{ij}$ 为大小 $[N_x \times N_y]$ 的矩阵, 其元素的值服从正态分布
+$\mathcal N(0, 2N_x^{-1}N_y^{-1})$. 对于网格大小, 空间尺寸
+$\Delta x = \Delta y = \pi/25$, 时间尺寸 $\delta t = 0.005$.
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\endinput
