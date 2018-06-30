@@ -31,15 +31,16 @@ Lw(x) = 2n \cdot \frac{F}{2n} + (1x)\frac{F}{2n}\mclosure{d^2-\abs{x}^2} \pm
 f(x) \geq 0
 \]
 $\mfwhen{w}{\partial\Omega}\geq0$, 由极值原理得 $w\geq0$, 于是有
-\[\abs{u}\leq\frac F{2n}\mclosure{d^2-\abs{x}^2}\leq\sup_{x\in\Omega}
-\mclosure{\frac{d^2-\abs{x}^2}{2n}}\cdot F\leq\frac{d^2}{2n}F\]
+\begin{align*}
+\abs{u} &\leq \frac F{2n}\mclosure{d^2-\abs{x}^2} \\
+&\leq\sup_{x\in\Omega} \mclosure{\frac{d^2-\abs{x}^2}{2n}}\cdot F
+    \leq\frac{d^2}{2n}F
+\end{align*}
 故取 $M = \dfrac{d^2}{2n}$, 有:
 $\max\limits_{\bar\Omega}\abs{u}\leq\dfrac{d^2}{2n}\sup\limits_\Omega\abs{f(x)}$
 \[\max_{\bar\Omega}\abs{u}\leq M\sup_\Omega\abs{f(x)}\]
 \qed
 \end{solution}
-
-
 %==============================================================================%
 %------------------------------------------------------------------------------%
 %==============================================================================%
@@ -62,19 +63,15 @@ $\Gamma_1 \cap \Gamma_2 = \varnothing$, $\Gamma_2 \neq \varnothing$ \\
 取 $w(x) = Z(x) + \dfrac{\Phi_1}{\alpha_0} + \Phi_2 \pm u$, 其中
 $Z(x)=\dfrac F{2n}\mclosure{\dfrac{1+\alpha^2}{\alpha_0^2}+\alpha^2-\abs{x}^2}$,
 则有 
-\[ \begin{aligned}
-&-\Delta w(x) + c(x)w(x) = -\Delta Z+c(x)Z+c(x)\mclosure{
-    \dfrac{\Phi_1}{\alpha_0} + \Phi_2
-} \pm (-\Delta u) \pm c(x)u \\
-&\quad \geq F + c(x) + \mclosure{
-    \dfrac{\Phi_1}{\alpha_0} + \Phi_2
-} \pm f \geq 0
-\end{aligned} \]
-\[
-\mclosure{\fracpartial wn+\alpha(x)w}_{\Gamma_1}
-=\mclosure{\fracpartial Zn+\alpha(x)Z}_{\Gamma_1}
-+\alpha(x)\frac{\Phi_1}{\alpha_0} + \alpha(x)\Phi_2 \pm \phi_1 \geq 0
-\]
+\begin{align*}
+&\quad-\Delta w(x) + c(x)w(x) \\
+&= -\Delta Z + c(x)Z + c(x) \biggl( \dfrac{\Phi_1}{\alpha_0} + \Phi_2 \biggr)
+    \pm (-\Delta u) \pm c(x)u \\
+&\geq F + c(x) + \biggl( \dfrac{\Phi_1}{\alpha_0} + \Phi_2 \biggr) \pm f \geq 0
+&\implies \mclosure{\fracpartial wn+\alpha(x)w}_{\Gamma_1}
+    = \mclosure{\fracpartial Zn+\alpha(x)Z}_{\Gamma_1} \\
+    &\quad+ \alpha(x)\frac{\Phi_1}{\alpha_0} + \alpha(x)\Phi_2 \pm \phi_1 \geq 0
+\end{align*}
 \[
 \mfwhen{w}{\Gamma_2}=\mfwhen{Z(x)}{\Gamma_2}+\frac{\Phi_1}{\alpha_0}+\Phi_2
 \pm \mfwhen{u}{\Gamma_2} \geq \Phi_2 \pm \phi_2 \geq 0
@@ -91,14 +88,12 @@ $Z(x)=\dfrac F{2n}\mclosure{\dfrac{1+\alpha^2}{\alpha_0^2}+\alpha^2-\abs{x}^2}$,
 } \]
 \qed
 \end{solution}
-
-
 %==============================================================================%
 %------------------------------------------------------------------------------%
 %==============================================================================%
 \paragraph{Ex 5.}
-设 $\Omega_0$ 是三维有界区域, $\Omega = \mreal^3\textbackslash\bar\Omega_0$. 又设
-$u \in C^2(\Omega) \cap C(\bar\Omega)$ 是外部问题
+设 $\Omega_0$ 是三维有界区域, $\Omega = \mreal^3\textbackslash\bar\Omega_0$. 又
+设 $u \in C^2(\Omega) \cap C(\bar\Omega)$ 是外部问题
 \[ \begin{cases}
 -\Delta u + c(x) u = 0, & x \in \Omega \\
 \mfwhen{u}{\partial\Omega} = \phi \\
@@ -115,19 +110,18 @@ $u \in C^2(\Omega) \cap C(\bar\Omega)$ 是外部问题
 
 取 $a$ 充分大, 使得 $B_a = \big\{x \big| \abs{x} < a\big\}$ 包含 $\Omega_0$, 取
 $\Omega_1 = B_a \setminus \Omega_0$, 在 $\Omega_1$ 上用最大模估计
-\[
-\max_{\Omega} \geq \max\mclosurebrace{
+\begin{align*}
+\max_{\Omega}\abs{u} &\geq \max\mclosurebrace{
     \max_{\partial\Omega_0}\abs{u}, \max_{\partial\Omega_1}\abs{u}
-} \geq \max\mclosurebrace{
+} \\
+&\geq \max\mclosurebrace{
     \max_{\partial\Omega_0}\abs{u}, \abs{l} + \epsilon
 }
-\]
+\end{align*}
 故当 $\epsilon \to 0$ 时, 
 \[ \max_\Omega\abs{u} \geq \max\mclosurebrace{\abs{l},\max_\Omega\abs{\phi}} \]
 \qed
 \end{solution}
-
-
 %==============================================================================%
 %------------------------------------------------------------------------------%
 %==============================================================================%
@@ -189,8 +183,6 @@ B_n &= -\frac{2\mclosuresquare{1+(-1)^{n+1}}}{n\pi\mclosure{
 } \cdot \sin\frac{n\pi}a x \]
 \qed
 \end{solution}
-
-
 %==============================================================================%
 %------------------------------------------------------------------------------%
 %==============================================================================%
@@ -221,12 +213,10 @@ Green 函数满足
 \mfwhen{\tilde{G}}{(\partial B^{+}} = 0
 \end{dcases} \]
 \[ \tilde{G}(x, y : \xi, \eta)=G_0(x, y : \xi, \eta)+G_0(x, y : \xi, -\eta) \]
-\[ \implies u(\xi, \eta) = \iint_\Omega \tilde{G}f\diff x\diff y
+\[ u(\xi, \eta) = \iint_\Omega \tilde{G}f\diff x\diff y
 -\int_{\partial B^{+} \cap {y>0}} \fracpartial{\tilde{G}}{n}\phi \diff l \]
 \qed
 \end{solution}
-
-
 %==============================================================================%
 %------------------------------------------------------------------------------%
 %==============================================================================%
@@ -244,32 +234,30 @@ $u_0(x) = \begin{cases}1, & x\in[a, b] \\ 0, & x \notin[a, b]\end{cases}$
 构造, 于上半平面 $M_0(x_0, y_0)$ 上放置一单位正电荷 $\me_0$, $M$ 关于边界
 $\Gamma$ 的对称点为 $M_1(x_0, -y_0)$, 于 $M_1$ 上放置一单位负电荷 $-\me_0$,
 则 $\Gamma$ 上电位相互抵消.
-\[ \implies \mfwhen{\frac 1{4\pi r_{MM_0}}}{\Gamma} =
+\[ \mfwhen{\frac 1{4\pi r_{MM_0}}}{\Gamma} =
 \mfwhen{\frac 1{4\pi r_{MM_1}}}{\Gamma} \]
 \[ G(M, M_0) = \frac 1{4\pi r_{MM_0}} - \frac 1{4\pi r_{MM_1}} \]
 
-\[ \begin{aligned}
+\begin{align*}
 \mfwhen{\fracpartial{G}{n}}{y=0} &= -\mfwhen{\fracpartial{G}{n}}{y=0}
-= -\frac 1{4\pi} \cdot \mfwhen{\fracpartials{y} \mclosuresquare{
-\frac 1{\sqrt{(x-x_0)^2 + (y-y_0)^2}} - \frac 1{\sqrt{(x-x_0)^2 + (y+y_0)^2}}
-}}{y=0} \\
+    = -\frac 1{4\pi} \\
+    &\quad\cdot \fracpartials{y} \bigg[ \frac 1{\sqrt{(x-x_0)^2 + (y-y_0)^2}} \\
+    &\quad- \frac 1{\sqrt{(x-x_0)^2 + (y+y_0)^2}} \bigg]\bigg|_{y=0} \\
 &= -\frac 1{2\pi} \mfwhen{\frac{y_0}{\mclosuresquare{
     (x-x_0)^2+(y-y_0)^2
 }^{3/2}}}{y=0}
-\end{aligned} \]
+\end{align*}
 代入 Dirichlet 问题, 有
-\[ \begin{aligned}
+\begin{align*}
 u(x_0, y_0) &= \frac 1{2\pi} \iint_\Omega \frac{y_0}{\mclosuresquare{
     (x-x_0)^2+y_0^2
 }^{3/2}} \cdot u_0(x) \diff x \diff y \\
 &= \frac 1{2\pi} \int_{-\infty}^{+\infty} \int_a^b \frac{y_0}{\mclosuresquare{
     (x-x_0)^2+y_0^2
 }^{3/2}}  \diff x \diff y \\
-\end{aligned} \]
+\end{align*}
 \qed
 \end{solution}
-
-
 %==============================================================================%
 %------------------------------------------------------------------------------%
 %==============================================================================%
