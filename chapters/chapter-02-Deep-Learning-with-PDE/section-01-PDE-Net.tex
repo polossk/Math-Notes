@@ -1,4 +1,4 @@
-\section{PDE-Net: Learning PDEs from Data}
+\section{PDE-Net: Learning PDEs \\from Data}
 \arxiv{1710.09668}
 %==============================================================================%
 %------------------------------------------------------------------------------%
@@ -155,10 +155,10 @@ d\mmu_{yy} &= d\mmu\mmdt_2 \\
 u_0 &= \sum_{k, l} \lambda_{k, l}\cos(kx+ly) + \gamma_{k, l}\sin(kx+ly) \\
 \mmu_0 &= \bigl(u_{ij}\bigr)_{N \times N}
     = \bigl(u_0(x_i, y_j)\bigr)_{N \times N} \\
-\mmk_1 &= \mmf(\mmu_0) \\
-\mmk_2 &= \mmf(\mmu_0 + \frac{1}{2} \cdot\delta t \cdot \mmk_1) \\
-\mmk_3 &= \mmf(\mmu_0 + \frac{1}{2} \cdot\delta t \cdot \mmk_2) \\
-\mmk_4 &= \mmf(\mmu_0 + \delta t \cdot \mmk_3) \\
+\mmk_1 &= \mmf\bigl(\mmu_0\bigr) \\
+\mmk_2 &= \mmf\biggl(\mmu_0 + \frac{1}{2} \cdot\delta t \cdot \mmk_1\biggr) \\
+\mmk_3 &= \mmf\biggl(\mmu_0 + \frac{1}{2} \cdot\delta t \cdot \mmk_2\biggr) \\
+\mmk_4 &= \mmf\bigl(\mmu_0 + \delta t \cdot \mmk_3\bigr) \\
 \mmu_1 &= \mmu_0 + \frac{1}{6}\delta t \cdot \bigl[
     \mmk_1 + \mmk_2 + \mmk_3 + \mmk_4 \bigr] \\
 \end{aligned} \]

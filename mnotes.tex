@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper]{book}
 %------------------------------------------------------------------------------%
-\newcommand\artversion{v0.1.0}
+\newcommand\artversion{v0.2.0}
 \newcommand\shorttitle{Math Notes}
 \newcommand\strtitle{Math Notes}
 \newcommand\strauthor{polossk}
@@ -17,8 +17,10 @@
 \newtheorem*{lemma}{引理}
 \renewcommand{\qed}{\ifmmode\qed\else\hfill\proofSymbol\fi}
 %------------------------------------------------------------------------------%
-\newcommand\arxiv[1]{{\it arXiv: #1}}
-\newcommand\doi[1]{{\it doi: #1}}
+\newcommand\arxiv[1]{%
+    \noindent\href{https://arxiv.org/abs/#1}{\fbox{\tt arXiv: #1}} \\}
+\newcommand\doi[1]{%
+    \noindent\href{https://doi.org/#1}{\fbox{\tt doi: #1}} \\}
 %------------------------------------------------------------------------------%
 \begin{document}
 %------------------------------------------------------------------------------%
@@ -35,7 +37,7 @@
         {\large \today} \\
     \end{center}
 \end{titlepage}
-\cleardoublepage
+\clearpage
 \phantomsection
 \addcontentsline{toc}{chapter}{\fHei 目录}
 \begin{multicols}{2}
