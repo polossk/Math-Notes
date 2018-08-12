@@ -1,0 +1,41 @@
+\section{不等式}
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\begin{defination}[Hölder's inequality for integrals]
+取 $1/p + 1/q = 1$ 且满足 $p, q > 1$. 则有
+\[
+\int_\mathcal{S} \abs{f g} \diff \mu
+    \leq \biggl( \int_\mathcal{S} \abs{f}^p \diff \mu \biggr)^{1/p}
+        \biggl( \int_\mathcal{S} \abs{g}^q \diff \mu \biggr)^{1/q}
+\]
+当 $\abs{g} = c \abs{f}^{p-1}$ 时等号成立. 上述等式又被记做
+$\normlp{fg}{1} \leq \normlp{f}{p} \normlp{g}{q}$.
+\end{defination}
+
+\begin{defination}[Hölder's inequality for sums]
+取 $1/p + 1/q = 1$ 且满足 $p, q > 1$. 则有
+\[
+\sum_{k=1}^n \abs{a_k b_k}
+    \leq \biggl( \sum_{k=1}^n \abs{a_k}^p \biggr)^{1/p}
+        \biggl( \sum_{k=1}^n \abs{b_k}^q \biggr)^{1/q}
+\]
+当 $\abs{b_k} = c \abs{a_k}^{p-1}$ 时等号成立.
+\end{defination}
+
+\begin{thm}[Schwarz's Inequality]
+取 $p = q = 2$, 其积分形式变形为 Schwarz's Inequality.
+\[ \norm{fg}^2 \leq \normlp{f}{2} \normlp{g}{2} \]
+\end{thm}
+
+\begin{thm}[Cauchy's Inequality]
+取 $p = q = 2$, 其离散形式变形为 Schwarz's Inequality.
+\[
+\biggl(\sum_{k=1}^n a_k b_k \biggr)^2
+    \leq \biggl(\sum_{k=1}^n a_k^2 \biggr) \biggl(\sum_{k=1}^n b_k^2 \biggr)\]
+也可以写作 $\norm{\mva\cdot\mvb} \leq \norm{\mva} \norm{\mvb}$
+\end{thm}
+%==============================================================================%
+%------------------------------------------------------------------------------%
+%==============================================================================%
+\endinput
