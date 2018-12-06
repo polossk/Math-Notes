@@ -1,33 +1,35 @@
-\section{PDE-Net: Learning PDEs \\from Data}
+\section{PDE-Net: Learning PDEs from Data}
 \arxiv{1710.09668}
+\index[date]{2018-06-30: PDE-Net}
+\index[keyword]{PDE-Net}
 %==============================================================================%
 %------------------------------------------------------------------------------%
 %==============================================================================%
 \paragraph{网络结构与计算流程}
-每一个 $\delta t-block$ 的计算流程如 \ref{tab:pde-net-dtblock} 所示.
+每一个 $\delta t\text{-block}$ 的计算流程如 \ref{tab:pde-net-dtblock} 所示.
 
-\begin{table}[h]
+\begin{table}[h]\centering
 \begin{tabular}{cl}
 \toprule
-$\delta t-block$ & $\mmu_i \to \hat \mmu_{i + 1}$ \\
+$\delta t\text{-block}$ & $\mmu_i \to \hat \mmu_{i + 1}$ \\
 \midrule
 Average & $\mmu_{avg} = \mmu_i \otimes conv_{avg}$ \\
 Conv & $\mmu_j = (\mmu_i \otimes conv_j) \odot w_j$ \\
 Shortcut & $\hat \mmu_{i + 1} = \mmu_{avg} + \delta t \sum_{j=0}^q \mmu_j$ \\
 \bottomrule
 \end{tabular}
-\caption{$\delta t-block$ 的计算流程}
+\caption{$\delta t\text{-block}$ 的计算流程}
 \label{tab:pde-net-dtblock}
 \end{table}
 
 \noindent 其中 $q$ 表示所考虑的方程的最高的阶数, $\delta t$ 表示时间尺度的网格尺
 寸, 符号 $\otimes$ 表示循环卷积, $\odot$ 表示矩阵对应项相乘. 则
-$k\delta t-blocks$ 的计算流程如 \ref{tab:pde-net-kdtblocks} 所示.
+$k\delta t\text{-blocks}$ 的计算流程如 \ref{tab:pde-net-kdtblocks} 所示.
 
-\begin{table}[h]
+\begin{table}[h]\centering
 \begin{tabular}{cl}
 \toprule
-$k\delta t-blocks$ & $\mmu_i \to \hat \mmu_{i + k}$ \\
+$k\delta t\text{-blocks}$ & $\mmu_i \to \hat \mmu_{i + k}$ \\
 \midrule
 block 1 & $\hat \mmu_{i + 1} = [\delta t-block]\rhd\mmu_i$ \\
 block 2 & $\hat \mmu_{i + 2} = [\delta t-block]\rhd\hat\mmu_{i + 1}$ \\
@@ -35,7 +37,7 @@ $\vdots$ & $\vdots$ \\
 block k & $\hat \mmu_{i + k} = [\delta t-block]\rhd\hat\mmu_{i+k-1}$ \\
 \bottomrule
 \end{tabular}
-\caption{$k\delta t-blocks$ 的计算流程}
+\caption{$k\delta t\text{-blocks}$ 的计算流程}
 \label{tab:pde-net-kdtblocks}
 \end{table}
 
@@ -108,13 +110,13 @@ $i, j = 0, 1, \cdots, N - 1$, 其中 $\phi_i(x)$ 和 $\psi_j(y)$ 为谱函数, �
 则原方程可以写成如下形式
 \[ \begin{aligned}
 u_t &= a(x, y) u_x^n + b(x, y) u_y^n + c u_{xx}^n + d u_{yy}^n \\
-    &= a(x, y) \sum_{i, j}^N u_{ij}^n \phi_i'(x) \psi_j(y) \\
-        &\quad+b(x, y)\sum_{i, j}^N u_{ij}^n \phi_i(x) \psi_j'(y) \\
+    &= a(x, y) \sum_{i, j}^N u_{ij}^n \phi_i'(x) \psi_j(y)
+        + b(x, y)\sum_{i, j}^N u_{ij}^n \phi_i(x) \psi_j'(y) \\
         &\quad+c\sum_{i, j}^N u_{ij}^n \phi_i''(x) \psi_j(y)
         + d \sum_{i, j}^N u_{ij}^n \phi_i(x) \psi_j''(y) \\
     &= \sum_{i, j}^N u_{ij}^n \bigl[ a(x, y) \phi_i'(x) \psi_j(y)
-        + b(x, y) \phi_i(x) \psi_j'(y) \\
-        &\qquad+c \phi_i''(x) \psi_j(y) + d \phi_i(x) \psi_j''(y) \bigr] \\
+        + b(x, y) \phi_i(x) \psi_j'(y)
+        + c \phi_i''(x) \psi_j(y) + d \phi_i(x) \psi_j''(y) \bigr] \\
     &= \mmu^n \odot (\mma + \mmb + \mmc + \mmd)
 \end{aligned} \]
 其中 $\mmu^n = (u_{ij}^n)_{N \times N}$,

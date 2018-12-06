@@ -10,10 +10,14 @@
 %------------------------------------------------------------------------------%
 \input{book-setting}
 \usepackage{multicol}
+\usepackage[noautomatic]{imakeidx}
+\makeindex[name=date, title=日期索引]
+\makeindex[name=keyword, title=内容索引]
 %------------------------------------------------------------------------------%
 \newtheorem*{solution}{解}
 \newtheorem*{solproof}{证明}
 \newtheorem*{defination}{定义}
+\newtheorem*{thm}{定理}
 \newtheorem*{lemma}{引理}
 \renewcommand{\qed}{\ifmmode\qed\else\hfill\proofSymbol\fi}
 %------------------------------------------------------------------------------%
@@ -38,9 +42,9 @@
     \end{center}
 \end{titlepage}
 \clearpage
+\begin{multicols}{2}
 \phantomsection
 \addcontentsline{toc}{chapter}{\fHei 目录}
-\begin{multicols}{2}
 \tableofcontents
 \end{multicols}
 \clearpage
@@ -50,13 +54,19 @@
 % 文章正文
 %------------------------------------------------------------------------------%
 \mainmatter
-\twocolumn
+% \twocolumn
 \input{chapters/chapter-01-Equations-of-Mathematical-Physics/main.tex}
 \input{chapters/chapter-02-Deep-Learning-with-PDE/main.tex}
 \input{chapters/chapter-99-Miscellaneous/main.tex}
-\onecolumn
+% \onecolumn
 %------------------------------------------------------------------------------%
-
+\backmatter
+\phantomsection
+\addcontentsline{toc}{chapter}{\fHei 日期索引}
+\printindex[date]
+\phantomsection
+\addcontentsline{toc}{chapter}{\fHei 内容索引}
+\printindex[keyword]
 %------------------------------------------------------------------------------%
 % 文章结束
 %------------------------------------------------------------------------------%
