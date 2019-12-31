@@ -11,12 +11,12 @@ f(x) = \begin{cases}0 & (\abs x > a) \\ \abs x & (\abs x \leq a) \end{cases}
 \begin{solution}
 \begin{align*}
 \hat f(\lambda) &= \frac1{\sqrt{2\pi}} \int_{-a}^a
- \abs{x} \me^{-\mi \lambda x} \diff x \\
-&= \frac1{\sqrt{2\pi}} \biggl( \int_0^a x \me^{-\mi \lambda x} \diff x
+ \abs{x} \me^{-\mi \lambda x} \diff x
+= \frac1{\sqrt{2\pi}} \biggl( \int_0^a x \me^{-\mi \lambda x} \diff x
     -\int_{-a}^a x \me^{-\mi \lambda x} \diff x \biggr) \\
 &= \frac{2}{\sqrt{2\pi}} \biggl( \frac1{\lambda^2} \cos (\lambda a)
-    - \frac1{\lambda^2} +\frac{a}{\lambda} \sin (\lambda a) \biggr) \\
-&= \sqrt{\frac{2}{\pi}} \biggl( \frac{a}{\lambda} \sin (\lambda a)
+    - \frac1{\lambda^2} +\frac{a}{\lambda} \sin (\lambda a) \biggr)
+= \sqrt{\frac{2}{\pi}} \biggl( \frac{a}{\lambda} \sin (\lambda a)
     + \frac1{\lambda^2} \cos (\lambda a) - \frac1{\lambda^2} \biggr)
 \end{align*}
 \qed
@@ -33,8 +33,8 @@ f(x)=\begin{cases}\me^{\mi \lambda_0 x}&(\abs x< L)\\0&(\abs x\geq L)\end{cases}
 \begin{solution}
 \begin{align*}
 \hat f(\lambda) &= \frac1{\sqrt{2\pi}} \int_{-L}^L
-    \me^{\mi (\lambda_0 - \lambda) x} \diff x \\
-&= \frac1{\sqrt{2\pi}} \frac{\me^{\mi (\lambda_0 - \lambda) L} 
+    \me^{\mi (\lambda_0 - \lambda) x} \diff x
+= \frac1{\sqrt{2\pi}} \frac{\me^{\mi (\lambda_0 - \lambda) L} 
     - \me^{-\mi (\lambda_0 - \lambda) L}}{\mi (\lambda_0 - \lambda)} \\
 &= \sqrt{\frac{2}{\pi}} \frac{\sin(\lambda_0 - \lambda) L}{\lambda_0 - \lambda}
 \end{align*}
@@ -50,8 +50,8 @@ f(x)=\begin{cases}\me^{\mi \lambda_0 x}&(\abs x< L)\\0&(\abs x\geq L)\end{cases}
 \begin{solution}
 \begin{align*}
 f(x) &= \lim_{N \to \infty} \frac1{\sqrt{2\pi}} \cdot
-    \int_{-N}^{N} \me^{\mi \lambda x - a^2 \lambda^2 t} \diff \lambda \\
-&= \lim_{N \to \infty} \frac1{\sqrt{2\pi}} \biggl[
+    \int_{-N}^{N} \me^{\mi \lambda x - a^2 \lambda^2 t} \diff \lambda
+= \lim_{N \to \infty} \frac1{\sqrt{2\pi}} \biggl[
     \int_{-N}^{N} \me^{\mi \lambda x} \diff \lambda
     + \int_{-N}^{N} \me^{-a^2 \lambda^2 t} \diff \lambda \biggr] \\
 &= \frac1{a\sqrt{2t}} \me^{-\frac{x^2}{4 a^2 t}}
@@ -85,18 +85,16 @@ $\begin{dcases}
 \end{dcases}$\\
 解此 ODE 得到
 \begin{align*}
-\hat u &= \me^{(-a^2\lambda^2 + \mi b \lambda + c)t} \hat\phi(\lambda) \\
-&\quad+ \int_0^t \me^{(-a^2\lambda^2 + \mi b \lambda + c)(t - \tau)}
-    \hat f(\lambda, \tau) \diff \tau
-\end{align*}
-\begin{align*}
-u &= (\hat u)^{\check{}} \\
-&= \me^{\mclosure{c-\frac{b}{4a^2}}t} \frac1{a\sqrt{2t}}
+\hat u &= \me^{(-a^2\lambda^2 + \mi b \lambda + c)t} \hat\phi(\lambda)
++ \int_0^t \me^{(-a^2\lambda^2 + \mi b \lambda + c)(t - \tau)}
+    \hat f(\lambda, \tau) \diff \tau \\
+u &= (\hat u)^{\check{}}
+= \me^{\mclosure{c-\frac{b}{4a^2}}t} \frac1{a\sqrt{2t}}
     \int_{-\infty}^{+\infty} \me^{\frac{(x - \xi)^2}{4a^2t}}
     \me^{-\frac{b}{2a^2}(x-\xi)} \phi(\xi) \diff \xi \\
 &\quad+ \int_0^{t} \frac1{a\sqrt{t-\tau}}
-    \me^{\mclosure{c-\frac{b}{4a^2}}(t-\tau)} \\
-    &\quad\quad\cdot \int_{-\infty}^{+\infty}
+    \me^{\mclosure{c-\frac{b}{4a^2}}(t-\tau)} 
+    \cdot \int_{-\infty}^{+\infty}
 	    \me^{\frac{(x - \xi)^2}{4a^2(t-\tau)}}
         \me^{-\frac{b}{2a^2}(x-\xi)} f(\xi, \tau) \diff \xi \diff \tau
 \end{align*}
@@ -133,32 +131,33 @@ u(x, y) = \sqrt{\frac{2}{\pi}} \int_{-\infty}^{+\infty} \frac{y}{y^2+(x-\xi)^2}
 \noindent (1): 对 $\phi(x) \cdot \delta(x)$, 考察 $\phi(x) \cdot \delta(x)$ 的对
 偶积
 \begin{align*}
-&<\phi(x) \cdot \delta(x), \xi(x)> \\
-&= \int_{-\infty}^{+\infty} 
-    \phi(x) \delta(x) \xi(x) \diff x \\
-&= <\delta(x), \phi(x) \xi(x)> = \phi(0) \xi(0)
+<\phi(x) \cdot \delta(x), \xi(x)>
+&= \int_{-\infty}^{+\infty} \phi(x) \delta(x) \xi(x) \diff x
+= <\delta(x), \phi(x) \xi(x)> \\
+&= \phi(0) \xi(0)
 \end{align*}
 又 $\xi(0) = <\delta(x), \xi(x)>$, 故有
 $\phi(0)\xi(0) = \phi(0) \cdot <\delta(x), \xi(x)>$
 \begin{align*}
-&\quad <\phi(x) \cdot \delta(x), \xi(x)> = \phi(0) <\delta(x), \xi(x)> \\
-&= \phi(0) \int_{-\infty}^{+\infty}\delta(x)\xi(x)\diff x
-    = <\phi(0) \delta(x), \xi(x)>
+<\phi(x) \cdot \delta(x), \xi(x)> &= \phi(0) <\delta(x), \xi(x)>
+    = \phi(0) \int_{-\infty}^{+\infty}\delta(x)\xi(x)\diff x \\
+&= <\phi(0) \delta(x), \xi(x)>
 \end{align*}
 即证 $\phi(x)\delta(x) = \phi(0)\delta(x)$
 
 \noindent (2): 对 $\phi(x) \cdot \delta'(x)$, 考察其对偶积
 \begin{align*}
-&<\phi(x) \cdot \delta'(x), \xi(x)> \\
-&= \int_{-\infty}^{+\infty} \phi(x) \delta'(x) \xi(x) \diff x \\
-&= <\delta'(x), \phi(x)\xi(x)> = -<\delta(x), (\phi(x)\xi(x))'> \\
-&= -<\delta(x), \phi(x)\xi'(x) + \phi'(x)\xi(x)> \\
-&= -<\delta(x), \phi(x)\xi'(x)> - <\delta(x), \phi'(x)\xi(x)> \\
-&= -\phi(0)\xi'(0) - \phi'(0)\xi(0) \\
+<\phi(x) \cdot \delta'(x), \xi(x)>
+&= \int_{-\infty}^{+\infty} \phi(x) \delta'(x) \xi(x) \diff x
+    = <\delta'(x), \phi(x)\xi(x)> \\
+&= -<\delta(x), (\phi(x)\xi(x))'>
+    = -<\delta(x), \phi(x)\xi'(x) + \phi'(x)\xi(x)> \\
+&= -<\delta(x), \phi(x)\xi'(x)> - <\delta(x), \phi'(x)\xi(x)>
+    = -\phi(0)\xi'(0) - \phi'(0)\xi(0) \\
 &= -\phi(0)<\delta(x), \xi'(x)> - \phi'(0)<\delta(x), \xi(x)> \\
 &= \phi(0)<\delta(x)', \xi(x)> - \phi'(0)<\delta(x), \xi(x)> \\
-&= \int_{-\infty}^{+\infty} \phi(0)\delta'(x)\xi(x) \diff x \\
-    &\quad- \int_{-\infty}^{+\infty} \phi'(0)\delta(x)\xi(x) \diff x \\
+&= \int_{-\infty}^{+\infty} \phi(0)\delta'(x)\xi(x) \diff x
+        - \int_{-\infty}^{+\infty} \phi'(0)\delta(x)\xi(x) \diff x \\
 &= <\phi(0)\delta'(0) - \phi'(0)\delta(0), \xi(x)>
 \end{align*}
 即证 $\phi(x)\delta'(x) = -\phi'(0)\delta(x) + \phi(0)\delta'(x)$
@@ -174,9 +173,9 @@ $\phi(0)\xi(0) = \phi(0) \cdot <\delta(x), \xi(x)>$
 \begin{solution}
 对 $\forall \phi \in \mathcal (\mreal)$ 有
 \begin{align*}
-&\quad<f', \phi> = -<f, \phi'> \\
-&= -\int_{-\infty}^{+\infty} f\cdot\phi'\diff x \\
-&= -\int_{0}^{+\infty} \sin x\cdot\phi'(x)\diff x \\
+\quad<f', \phi> = -<f, \phi'>
+&= -\int_{-\infty}^{+\infty} f\cdot\phi'\diff x
+    = -\int_{0}^{+\infty} \sin x\cdot\phi'(x)\diff x \\
 &= -\mclosuresquare{\left.\sin x\phi(x)\right|_0^{+\infty}
 + \int_{0}^{+\infty} \cos x\phi(x) \diff x} \\
 &= +\int_0^{+\infty} \cos x\phi(x) \diff x
@@ -202,7 +201,7 @@ u(x, 0) = 0, & x \geq 0 \\
 \begin{solution}
 令 $z = \frac{x}{2a\sqrt{t}}$, 则有
 \begin{align*}
-&\fracpartial{\Phi}{t} - a^2 \fracpartial{^2\Phi}{x^2} \\
+\fracpartial{\Phi}{t} - a^2 \fracpartial{^2\Phi}{x^2}
 &= \fracpartial{\Phi}{z} \fracpartial{z}{t}
  - a^2 \fracpartials{x}\mclosure{\fracpartial{\Phi}{x}}
 = \fracpartial{\Phi}{z} \fracpartial{z}{t}
@@ -237,16 +236,15 @@ $\bar{\phi}(x) = \begin{dcases}qx,&x\geq0\\-qx,&x<0\end{dcases}$, 故有
 \end{align*}
 令 $y = \frac{x+\xi}{2a\sqrt{t}}$, 则有
 \begin{align*}
-&\bar{v}(x, t) \\
+\bar{v}(x, t)
 &= \frac1{2a\sqrt{\pi t}} 
     \int_{\frac{x}{2a\sqrt{t}}}^\infty \me^{-y^2}q
-        \mclosure{ x - 2a\sqrt{t} y } \diff \mclosure{ x - 2a\sqrt{t} y } \\
-    &\quad+\frac1{2a\sqrt{\pi t}}
+        \mclosure{ x - 2a\sqrt{t} y } \diff \mclosure{ x - 2a\sqrt{t} y }
+    +\frac1{2a\sqrt{\pi t}}
     \int_{\frac{x}{2a\sqrt{t}}}^\infty \me^{-y^2}q
         \mclosure{ 2a\sqrt{t} y - x } \diff \mclosure{ 2a\sqrt{t} y - x } \\
 &= -\frac{qx}{\sqrt{\pi}} \int_{\frac{x}{2a\sqrt{t}}}^\infty \me^{-y^2} \diff y
-    + 2aq\sqrt{\frac{t}{\pi}} \\
-    &\quad\cdot \Biggl[
+    + 2aq\sqrt{\frac{t}{\pi}} \cdot \Biggl[
         \int_{\frac{x}{2a\sqrt{t}}}^{-\frac{x}{2a\sqrt{t}}} y\me^{-y^2}\diff y
         + \int_{-\frac{x}{2a\sqrt{t}}}^\infty y\me^{-y^2}\diff y \Biggr] \\
     &\quad+ 2aq\sqrt{\frac{t}{\pi}}
@@ -254,13 +252,13 @@ $\bar{\phi}(x) = \begin{dcases}qx,&x\geq0\\-qx,&x<0\end{dcases}$, 故有
         - \frac{qx}{\sqrt{\pi}} \int_{\frac{x}{2a\sqrt{t}}}^\infty
 		\me^{-y^2} \diff y \\
 &= -\frac{qx}{2}\mclosure{\Phi(-\infty) - \Phi\mclosure{\frac{x}{2a\sqrt{t}}}}
-    + 4aq\sqrt{\frac{t}{\pi}} \\
-    &\quad\cdot\int_{\frac{x}{2a\sqrt{t}}}^\infty y\me^{-y^2} \diff y
+    + 4aq\sqrt{\frac{t}{\pi}}
+    \int_{\frac{x}{2a\sqrt{t}}}^\infty y\me^{-y^2} \diff y
         - \frac{qx}{2}\mclosure{\Phi(\infty)
 		- \Phi\mclosure{\frac{x}{2a\sqrt{t}}}}\\
 &= -\frac{qx}{2}\biggl[ \Phi(\infty) + \Phi(-\infty)
-    - 2\Phi\mclosure{\frac{x}{2a\sqrt{t}}} \biggr] \\
-    &\quad+ 2aq\sqrt{\frac{t}{\pi}} \me^{-\frac{x^2}{4a^2t}} \\
+    - 2\Phi\mclosure{\frac{x}{2a\sqrt{t}}} \biggr]
+    + 2aq\sqrt{\frac{t}{\pi}} \me^{-\frac{x^2}{4a^2t}} \\
 &\implies u(x, t) = \bar{v}(x, t) - qx
 \end{align*}
 \qed

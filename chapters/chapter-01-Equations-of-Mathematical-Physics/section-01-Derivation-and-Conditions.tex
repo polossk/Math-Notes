@@ -200,8 +200,8 @@ J(\epsilon) = \int_b^a \sqrt{1 + \left(f^*_x + \epsilon v_x\right)^2} \diff x
   \frac{2 (f^*_x + \epsilon v_x) v_x}{1 + \left(f^*_x + \epsilon v_x\right)^2}
   \diff x \\
 J'(0) &= \int_b^a
-  \frac{f^*_x v_x}{\sqrt{1 + (f^*_x)^2}} \diff x \\
-&= \int_b^a
+  \frac{f^*_x v_x}{\sqrt{1 + (f^*_x)^2}} \diff x
+  = \int_b^a
   \left[ \left( \frac{f^*_x}{\sqrt{1 + (f^*_x)^2}} \right)_x \diff x - v \right]
   = 0
 \end{align*}
@@ -221,8 +221,8 @@ $f^* = \tilde c x + b$ 的形式, 代入 $A(0, 0)$, $B(3, 5)$, 得 $f^* = (5 / 3
 设
 \begin{align*}
 J(v) &= \frac{1}{2} \int_{\Omega} (|\nabla v|^2 + v^2)\diff x
-+ \frac{1}{2} \int_{\partial \Omega} \alpha(x) v^2 \diff s \\
-&\quad- \int_{\Omega} fv \diff x - \int_{\partial \Omega} gv \diff s
+    + \frac{1}{2} \int_{\partial \Omega} \alpha(x) v^2 \diff s
+    - \int_{\Omega} fv \diff x - \int_{\partial \Omega} gv \diff s
 \end{align*}
 其中 $\alpha(x) \geq 0$. 考虑以下三个问题:
 
@@ -252,51 +252,49 @@ $\phi(\epsilon) = J(u + \epsilon v)$, $\phi'(0) = 0$, 即
 \phi(\epsilon) &= J(u + \epsilon v) \\
 &= \frac12 \int_\Omega 
     \left[ |\nabla u + \epsilon \nabla v|^2 + (u + \epsilon v)^2 \right]
-    \diff x \\
-&\quad+ \frac12 \int_{\partial\Omega} \alpha(x) (u + \epsilon v)^2 \diff s \\
-&\quad- \int_\Omega f(u + \epsilon v) \diff x
+    \diff x
+    - \int_\Omega f(u + \epsilon v) \diff x \\
+&\quad+ \frac12 \int_{\partial\Omega} \alpha(x) (u + \epsilon v)^2 \diff s
     - \int_{\partial\Omega} g(u + \epsilon v) \diff s
 \end{align*}
 代入求导可得
 \begin{align*}
 \phi'(0) &= J(u) = \frac12\cdot 2\cdot \int_\Omega
-    \left( \nabla u \cdot \nabla v + uv \right) \diff x \\
-&\quad+ \frac12\cdot 2\cdot \int_{\partial\Omega} \alpha(x)uv \diff s \\
-&\quad- \int_\Omega fv\diff x - \int_{\partial\Omega} gv\diff s \\
+    \left( \nabla u \cdot \nabla v + uv \right) \diff x
+    + \frac12\cdot 2\cdot \int_{\partial\Omega} \alpha(x)uv \diff s
+    - \int_\Omega fv\diff x - \int_{\partial\Omega} gv\diff s \\
 &= 0
 \end{align*}
 化简
 \begin{align*}
-&\int_\Omega \left( \nabla u \cdot \nabla v + uv -fv \right) \diff x \\
-&\quad+ \int_{\partial\Omega} \left( \alpha(x)uv - gv \right) \diff s = 0
+&\int_\Omega \left( \nabla u \cdot \nabla v + uv -fv \right) \diff x
+    + \int_{\partial\Omega} \left( \alpha(x)uv - gv \right) \diff s = 0
 \end{align*}
 即证 (I) $\Rightarrow$ (II).
 
 \noindent (I) $\Leftarrow$ (II) (必要性):
 同时假设 $u$ 满足 (II), $\forall v \in M$, $J(v) = J(u + v - u)$, 即
 \begin{align*}
-J(v) &= \frac12 \int_\Omega \left( |\nabla u|^2 + u^2 \right) \diff x \\
-&\quad+ \int_\Omega\left[|\nabla u\cdot(\nabla v-\nabla u)|+u(v-u)\right]
+J(v) &= \frac12 \int_\Omega \left( |\nabla u|^2 + u^2 \right) \diff x
+    + \int_\Omega\left[|\nabla u\cdot(\nabla v-\nabla u)|+u(v-u)\right]
     \diff x \\
 &\quad+ \frac12 \int_\Omega \left( |\nabla (v - u)|^2 + (v - u)^2 \right)
-    \diff x \\
-&\quad- \int_\Omega fu \diff x - \int_\Omega f(v - u) \diff x \\
+    \diff x
+    - \int_\Omega fu \diff x - \int_\Omega f(v - u) \diff x \\
 &\quad+ \frac12 \int_{\partial\Omega} \alpha(x) u^2 \diff s
     + \int_{\partial\Omega} \alpha(x) u(v - u) \diff s \\
-&\quad+ \frac12 \int_{\partial\Omega} \alpha(x) (v - u)^2 \diff s \\
-&\quad- \int_{\partial\Omega} gu \diff s - \int_{\partial\Omega} g(v - u)
+&\quad+ \frac12 \int_{\partial\Omega} \alpha(x) (v - u)^2 \diff s
+    - \int_{\partial\Omega} gu \diff s - \int_{\partial\Omega} g(v - u)
     \diff s \\
-&= J(u) + \frac12 \int_{\partial\Omega} \alpha(x) (v - u)^2 \diff s \\
-&\quad+ \int_\Omega
+&= J(u) + \frac12 \int_{\partial\Omega} \alpha(x) (v - u)^2 \diff s
+    + \int_\Omega
     \left[ |\nabla u \cdot (\nabla v - \nabla u)| + u(v - u) \right] \diff x
 \end{align*}
 又由于
 \[ \begin{equlist}
 &\int_\Omega\left[|\nabla u\cdot(\nabla v-\nabla u)|+u(v-u)\right]\diff x
-    \geq 0 \\
-&\phantom{~~~~~~~~}(\text{平方项}) \\
-&\int_{\partial\Omega} \alpha(x) (v - u)^2 \diff s \geq 0 \\
-&\phantom{~~~~~~~~}(\text{平方项} \times \text{正数}) \\
+    \geq 0 &(\text{平方项}) \\
+&\int_{\partial\Omega} \alpha(x) (v - u)^2 \diff s \geq 0 &(\text{平方项} \times \text{正数}) \\
 \end{equlist} \]
 即证 $J(v) \geq J(u)$.
 \qed

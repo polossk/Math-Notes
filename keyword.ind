@@ -1,0 +1,47 @@
+\begin{theindex}
+  \def\seename{见}
+  \def\alsoname{又见}
+  \providecommand*\indexgroup[1]{%
+    \indexspace
+    \item \textbf{#1}\nopagebreak}
+  %
+  \indexgroup{B}
+  %
+
+  \item 不等式, 32
+    \subitem Cauchy's Inequality, 32
+    \subitem Hölder's Inequality, 32
+    \subitem Schwarz's Inequality, 32
+
+  \indexspace
+
+  %
+  \indexgroup{P}
+  %
+
+  \item PDE-Net, 25
+  \item 排列组合恒等式, 30
+    \subitem 错排公式, 32
+    \subitem 典型问题, 31
+    \subitem 排列恒等式, 31
+    \subitem 组合恒等式, 31
+
+  \indexspace
+
+  %
+  \indexgroup{S}
+  %
+
+  \item 数学物理方程习题, 1
+
+  \indexspace
+
+  %
+  \indexgroup{Y}
+  %
+
+  \item 一元三次方程, 29
+    \subitem 求根公式, 30
+    \subitem 韦达定理, 30
+
+\end{theindex}
